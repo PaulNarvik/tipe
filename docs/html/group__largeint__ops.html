@@ -101,8 +101,8 @@ Fonctions</h2></td></tr>
 <tr class="memdesc:gae03bbcfa19a822ea7bd12ea9ea53b387"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie un pointeur vers un grand entier de la taille voulue.  <br /></td></tr>
 <tr class="memitem:ga82d63c7c9738ded248ee28e9083b8e04" id="r_ga82d63c7c9738ded248ee28e9083b8e04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga82d63c7c9738ded248ee28e9083b8e04">largeint_free</a> (<a class="el" href="structlargeint.html">largeint</a> *n)</td></tr>
 <tr class="memdesc:ga82d63c7c9738ded248ee28e9083b8e04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libère toute la mémoire occupée par le grand entier.  <br /></td></tr>
-<tr class="memitem:ga78718feff1baea4280afc3ae41672656" id="r_ga78718feff1baea4280afc3ae41672656"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga78718feff1baea4280afc3ae41672656">largeint_resize</a> (<a class="el" href="structlargeint.html">largeint</a> *n, size_t size)</td></tr>
-<tr class="memdesc:ga78718feff1baea4280afc3ae41672656"><td class="mdescLeft">&#160;</td><td class="mdescRight">Redimensionne le grand entier à la taille donné.  <br /></td></tr>
+<tr class="memitem:gaa7d9f7b34130b0e391f1748a678194c0" id="r_gaa7d9f7b34130b0e391f1748a678194c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaa7d9f7b34130b0e391f1748a678194c0">largeint_resize</a> (<a class="el" href="structlargeint.html">largeint</a> *n, size_t new_size)</td></tr>
+<tr class="memdesc:gaa7d9f7b34130b0e391f1748a678194c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Redimensionne le grand entier à la taille donné.  <br /></td></tr>
 <tr class="memitem:gaaa25dbb58f5095df6ab6060d22915230" id="r_gaaa25dbb58f5095df6ab6060d22915230"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gaaa25dbb58f5095df6ab6060d22915230">largeint_add</a> (<a class="el" href="structlargeint.html">largeint</a> *result, <a class="el" href="structlargeint.html">largeint</a> *n, <a class="el" href="structlargeint.html">largeint</a> *m)</td></tr>
 <tr class="memdesc:gaaa25dbb58f5095df6ab6060d22915230"><td class="mdescLeft">&#160;</td><td class="mdescRight">Additionne deux grands entiers et place le résultat derrière le pointeur donné.  <br /></td></tr>
 <tr class="memitem:ga8dbce3d09e5f086db99a04eb870fc4ec" id="r_ga8dbce3d09e5f086db99a04eb870fc4ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga8dbce3d09e5f086db99a04eb870fc4ec">largeint_multiply</a> (<a class="el" href="structlargeint.html">largeint</a> *result)</td></tr>
@@ -144,7 +144,7 @@ Fonctions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section pre"><dt>Précondition</dt><dd>Le pointeur result correspond à une zone mémoire valide. </dd></dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Le pointeur <span class="tt">result</span> correspond à une zone mémoire valide. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>La valeur précédemment derrière le pointeur <span class="tt">result</span> est écrasée. </dd></dl>
 
 </div>
@@ -230,8 +230,8 @@ Fonctions</h2></td></tr>
 
 </div>
 </div>
-<a id="ga78718feff1baea4280afc3ae41672656" name="ga78718feff1baea4280afc3ae41672656"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga78718feff1baea4280afc3ae41672656">&#9670;&#160;</a></span>largeint_resize()</h2>
+<a id="gaa7d9f7b34130b0e391f1748a678194c0" name="gaa7d9f7b34130b0e391f1748a678194c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa7d9f7b34130b0e391f1748a678194c0">&#9670;&#160;</a></span>largeint_resize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -244,7 +244,7 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>new_size</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -253,7 +253,7 @@ Fonctions</h2></td></tr>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">n</td><td>Le pointeur vers le grand entier à redimensionner. </td></tr>
-    <tr><td class="paramname">size</td><td>La nouvelle taille de l'entier. </td></tr>
+    <tr><td class="paramname">new_size</td><td>La nouvelle taille de l'entier. </td></tr>
   </table>
   </dd>
 </dl>
