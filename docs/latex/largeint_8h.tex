@@ -1,0 +1,32 @@
+\doxysection{Référence du fichier include/largeint.h}
+\hypertarget{largeint_8h}{}\label{largeint_8h}\index{include/largeint.h@{include/largeint.h}}
+
+
+Définitions pour les grands entiers nécessaires à la cryptographie sur les courbes elliptiques.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structlargeint}{largeint}}
+\begin{DoxyCompactList}\small\item\em Représente un grand entier à l\textquotesingle{}aide d\textquotesingle{}un tableau. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structlargeint}{largeint}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{group__largeint__ops_gae03bbcfa19a822ea7bd12ea9ea53b387}{largeint\+\_\+init}} (size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Renvoie un pointeur vers un grand entier de la taille voulue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__largeint__ops_ga82d63c7c9738ded248ee28e9083b8e04}{largeint\+\_\+free}} (\mbox{\hyperlink{structlargeint}{largeint}} \texorpdfstring{$\ast$}{*}n)
+\begin{DoxyCompactList}\small\item\em Libère toute la mémoire occupée par le grand entier. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__largeint__ops_ga78718feff1baea4280afc3ae41672656}{largeint\+\_\+resize}} (\mbox{\hyperlink{structlargeint}{largeint}} \texorpdfstring{$\ast$}{*}n, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Redimensionne le grand entier à la taille donné. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__largeint__ops_gaaa25dbb58f5095df6ab6060d22915230}{largeint\+\_\+add}} (\mbox{\hyperlink{structlargeint}{largeint}} \texorpdfstring{$\ast$}{*}result, \mbox{\hyperlink{structlargeint}{largeint}} \texorpdfstring{$\ast$}{*}n, \mbox{\hyperlink{structlargeint}{largeint}} \texorpdfstring{$\ast$}{*}m)
+\begin{DoxyCompactList}\small\item\em Additionne deux grands entiers et place le résultat derrière le pointeur donné. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__largeint__ops_ga8dbce3d09e5f086db99a04eb870fc4ec}{largeint\+\_\+multiply}} (\mbox{\hyperlink{structlargeint}{largeint}} \texorpdfstring{$\ast$}{*}result)
+\begin{DoxyCompactList}\small\item\em Multiplie deux grands entiers et place le résultat derrière le pointeur donné. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Définitions pour les grands entiers nécessaires à la cryptographie sur les courbes elliptiques. 
+

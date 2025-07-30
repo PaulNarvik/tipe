@@ -1,0 +1,32 @@
+\doxysection{largeint.\+h}
+\hypertarget{largeint_8h_source}{}\label{largeint_8h_source}\index{include/largeint.h@{include/largeint.h}}
+\mbox{\hyperlink{largeint_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ LARGEINT\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ LARGEINT\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00019\ \ \ uint32\_t*\ digits;}
+\DoxyCodeLine{00020\ \ \ \textcolor{keywordtype}{size\_t}\ size;}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{size\_t}\ used;}
+\DoxyCodeLine{00022\ \}\ \mbox{\hyperlink{structlargeint}{largeint}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00035\ \mbox{\hyperlink{structlargeint}{largeint}}*\ \mbox{\hyperlink{group__largeint__ops_gae03bbcfa19a822ea7bd12ea9ea53b387}{largeint\_init}}(\textcolor{keywordtype}{size\_t}\ size);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__largeint__ops_ga82d63c7c9738ded248ee28e9083b8e04}{largeint\_free}}(\mbox{\hyperlink{structlargeint}{largeint}}*\ n);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__largeint__ops_ga78718feff1baea4280afc3ae41672656}{largeint\_resize}}(\mbox{\hyperlink{structlargeint}{largeint}}*\ n,\ \textcolor{keywordtype}{size\_t}\ size);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__largeint__ops_gaaa25dbb58f5095df6ab6060d22915230}{largeint\_add}}(\mbox{\hyperlink{structlargeint}{largeint}}*\ result,\ \mbox{\hyperlink{structlargeint}{largeint}}*\ n,\ \mbox{\hyperlink{structlargeint}{largeint}}*\ m);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00071\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__largeint__ops_ga8dbce3d09e5f086db99a04eb870fc4ec}{largeint\_multiply}}(\mbox{\hyperlink{structlargeint}{largeint}}*\ result);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
