@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['grands_20entiers_0',['Opérations sur les grands entiers',['../group__largeint__ops.html',1,'']]]
+  ['entiers_0',['Fonctions sur les grands entiers',['../group__largeint__func.html',1,'']]]
 ];

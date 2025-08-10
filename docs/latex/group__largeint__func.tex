@@ -1,0 +1,83 @@
+\doxysection{Fonctions sur les grands entiers }
+\hypertarget{group__largeint__func}{}\label{group__largeint__func}\index{Fonctions sur les grands entiers@{Fonctions sur les grands entiers}}
+
+
+Fonctions pour manipuler les grands entiers.  
+
+
+\doxysubsubsection*{Topics}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__largeint__func__mem}{Fonctions liées à la mémoire}}
+\begin{DoxyCompactList}\small\item\em Fonctions pour manipuler la mémoire liée aux grands entiers. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__largeint__func__aff}{Fonctions liées à l\textquotesingle{}affichage}}
+\begin{DoxyCompactList}\small\item\em Fonctions pour aficher de grands entiers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group__largeint__func_gaa9091dd3456f6b62fb4b2096b95f2b49}{largeint\+\_\+add}} (\mbox{\hyperlink{structlargeint}{largeint}} \texorpdfstring{$\ast$}{*}result, \mbox{\hyperlink{structlargeint}{largeint}} \texorpdfstring{$\ast$}{*}ptr1, \mbox{\hyperlink{structlargeint}{largeint}} \texorpdfstring{$\ast$}{*}ptr2)
+\begin{DoxyCompactList}\small\item\em Additionne deux grands entiers et place le résultat derrière le pointeur donné. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__largeint__func_gac95a6e581694b6a5258e0fa55264afcb}{largeint\+\_\+multiply}} (\mbox{\hyperlink{structlargeint}{largeint}} \texorpdfstring{$\ast$}{*}result, \mbox{\hyperlink{structlargeint}{largeint}} \texorpdfstring{$\ast$}{*}ptr1, \mbox{\hyperlink{structlargeint}{largeint}} \texorpdfstring{$\ast$}{*}ptr2)
+\begin{DoxyCompactList}\small\item\em Multiplie deux grands entiers et place le résultat derrière le pointeur donné. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Fonctions pour manipuler les grands entiers. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{group__largeint__func_doc-func-members}
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{group__largeint__func_gaa9091dd3456f6b62fb4b2096b95f2b49}\index{Fonctions sur les grands entiers@{Fonctions sur les grands entiers}!largeint\_add@{largeint\_add}}
+\index{largeint\_add@{largeint\_add}!Fonctions sur les grands entiers@{Fonctions sur les grands entiers}}
+\doxysubsubsection{\texorpdfstring{largeint\_add()}{largeint\_add()}}
+{\footnotesize\ttfamily \label{group__largeint__func_gaa9091dd3456f6b62fb4b2096b95f2b49} 
+void largeint\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structlargeint}{largeint}} \texorpdfstring{$\ast$}{*}}]{result}{, }\item[{\mbox{\hyperlink{structlargeint}{largeint}} \texorpdfstring{$\ast$}{*}}]{ptr1}{, }\item[{\mbox{\hyperlink{structlargeint}{largeint}} \texorpdfstring{$\ast$}{*}}]{ptr2}{}\end{DoxyParamCaption})}
+
+
+
+Additionne deux grands entiers et place le résultat derrière le pointeur donné. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em result} & Le pointeur derrière lequel stocker la somme. \\
+\hline
+{\em ptr1} & Le pointeur vers le premier grand entier à sommer. \\
+\hline
+{\em ptr2} & Le pointeur vers le deuxième grand entier à sommer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+Le pointeur {\ttfamily result} correspond à une zone mémoire valide. 
+\end{DoxyPrecond}
+\begin{DoxyNote}{Note}
+La valeur précédemment derrière le pointeur {\ttfamily result} est écrasée. 
+\end{DoxyNote}
+\Hypertarget{group__largeint__func_gac95a6e581694b6a5258e0fa55264afcb}\index{Fonctions sur les grands entiers@{Fonctions sur les grands entiers}!largeint\_multiply@{largeint\_multiply}}
+\index{largeint\_multiply@{largeint\_multiply}!Fonctions sur les grands entiers@{Fonctions sur les grands entiers}}
+\doxysubsubsection{\texorpdfstring{largeint\_multiply()}{largeint\_multiply()}}
+{\footnotesize\ttfamily \label{group__largeint__func_gac95a6e581694b6a5258e0fa55264afcb} 
+void largeint\+\_\+multiply (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structlargeint}{largeint}} \texorpdfstring{$\ast$}{*}}]{result}{, }\item[{\mbox{\hyperlink{structlargeint}{largeint}} \texorpdfstring{$\ast$}{*}}]{ptr1}{, }\item[{\mbox{\hyperlink{structlargeint}{largeint}} \texorpdfstring{$\ast$}{*}}]{ptr2}{}\end{DoxyParamCaption})}
+
+
+
+Multiplie deux grands entiers et place le résultat derrière le pointeur donné. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em result} & Le pointeur derrière lequel stocker le produit. \\
+\hline
+{\em ptr1} & Le pointeur vers le premier grand entier à multiplier. \\
+\hline
+{\em ptr2} & Le pointeur vers le deuxième grand entier à multiplier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Précondition}
+Le pointeur result correspond à une zone mémoire valide. 
+\end{DoxyPrecond}
+\begin{DoxyNote}{Note}
+La valeur précédente derrière le pointeur {\ttfamily result} est écrasée. 
+\end{DoxyNote}
+\input{group__largeint__func__mem}
+\input{group__largeint__func__aff}

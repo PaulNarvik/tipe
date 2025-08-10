@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TIPE: Référence de la structure largeint</title>
+<title>TIPE: Fonctions liées à l&#39;affichage</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('structlargeint.html','','structlargeint-members'); });
+$(function(){initNavTree('group__largeint__func__aff.html','',''); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -88,41 +88,75 @@ $(function(){initNavTree('structlargeint.html','','structlargeint-members'); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">Référence de la structure largeint</div></div>
+  <div class="headertitle"><div class="title">Fonctions liées à l'affichage <div class="ingroups"><a class="el" href="group__largeint__func.html">Fonctions sur les grands entiers</a></div></div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Représente un grand entier à l'aide d'un tableau.  
- <a href="#details">Plus de détails...</a></p>
-
-<p><code>#include &lt;<a class="el" href="largeint_8h_source.html">largeint.h</a>&gt;</code></p>
+<p>Fonctions pour aficher de grands entiers.  
+<a href="#details">Plus de détails...</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Attributs publics</h2></td></tr>
-<tr class="memitem:a5926807ae4542ff7641a7818b3796370" id="r_a5926807ae4542ff7641a7818b3796370"><td class="memItemLeft" align="right" valign="top"><a id="a5926807ae4542ff7641a7818b3796370" name="a5926807ae4542ff7641a7818b3796370"></a>
-uint32_t *&#160;</td><td class="memItemRight" valign="bottom"><b>digits</b></td></tr>
-<tr class="memitem:a0d19cc100d92deea4ab018ab3f5bfc56" id="r_a0d19cc100d92deea4ab018ab3f5bfc56"><td class="memItemLeft" align="right" valign="top"><a id="a0d19cc100d92deea4ab018ab3f5bfc56" name="a0d19cc100d92deea4ab018ab3f5bfc56"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>size</b></td></tr>
-<tr class="memitem:ad604838d348cf4eb292316a583a9e253" id="r_ad604838d348cf4eb292316a583a9e253"><td class="memItemLeft" align="right" valign="top"><a id="ad604838d348cf4eb292316a583a9e253" name="ad604838d348cf4eb292316a583a9e253"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><b>used</b></td></tr>
-<tr class="memitem:acbe6a9dd54c3218b676995e7c5cd4842" id="r_acbe6a9dd54c3218b676995e7c5cd4842"><td class="memItemLeft" align="right" valign="top"><a id="acbe6a9dd54c3218b676995e7c5cd4842" name="acbe6a9dd54c3218b676995e7c5cd4842"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>sign</b></td></tr>
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ga7705673b55a23e06b28d7e5495a40e86" id="r_ga7705673b55a23e06b28d7e5495a40e86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ga7705673b55a23e06b28d7e5495a40e86">largeint_print</a> (<a class="el" href="structlargeint.html">largeint</a> *ptr)</td></tr>
+<tr class="memdesc:ga7705673b55a23e06b28d7e5495a40e86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche un grand entier en base 10.  <br /></td></tr>
+<tr class="memitem:gae15aa91ecdb1a5d1e690f46a70730ced" id="r_gae15aa91ecdb1a5d1e690f46a70730ced"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#gae15aa91ecdb1a5d1e690f46a70730ced">largeint_print_base</a> (<a class="el" href="structlargeint.html">largeint</a> *ptr)</td></tr>
+<tr class="memdesc:gae15aa91ecdb1a5d1e690f46a70730ced"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche un grand entier en base 2^32.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Représente un grand entier à l'aide d'un tableau. </p>
+<p>Fonctions pour aficher de grands entiers. </p>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="ga7705673b55a23e06b28d7e5495a40e86" name="ga7705673b55a23e06b28d7e5495a40e86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7705673b55a23e06b28d7e5495a40e86">&#9670;&#160;</a></span>largeint_print()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void largeint_print </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlargeint.html">largeint</a> *</td>          <td class="paramname"><span class="paramname"><em>ptr</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche un grand entier en base 10. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">digits</td><td>Tableau des chiffres du grand entier en base 2^32. </td></tr>
-    <tr><td class="paramname">size</td><td>Nombre de chiffres utilisés par le grand entier. </td></tr>
-    <tr><td class="paramname">used</td><td>Rang du dernier chiffre utilisé. </td></tr>
-    <tr><td class="paramname">sign</td><td>Le signe du grand entier, 1 pour positif, -1 pour négatif. </td></tr>
+    <tr><td class="paramname">ptr</td><td>Le pointeur vers le grand entier. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>Cette structure est implémentée comme un tableau dynamique, en particulier, aucune condtion n'est donnée sur le contenu des cellules dont l'indice est supérieur à celle du dernier chiffre utilisé. </dd></dl>
-</div><hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
-<li>include/<a class="el" href="largeint_8h_source.html">largeint.h</a></li>
-</ul>
+<dl class="section pre"><dt>Précondition</dt><dd>Le pointeur est non nul. </dd></dl>
+
+</div>
+</div>
+<a id="gae15aa91ecdb1a5d1e690f46a70730ced" name="gae15aa91ecdb1a5d1e690f46a70730ced"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae15aa91ecdb1a5d1e690f46a70730ced">&#9670;&#160;</a></span>largeint_print_base()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void largeint_print_base </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlargeint.html">largeint</a> *</td>          <td class="paramname"><span class="paramname"><em>ptr</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche un grand entier en base 2^32. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>Le pointeur vers le grand entier. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section pre"><dt>Précondition</dt><dd>Le pointeur est non nul. </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
@@ -136,7 +170,6 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>sign</b></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="structlargeint.html">largeint</a></li>
     <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>

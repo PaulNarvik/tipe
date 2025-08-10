@@ -1,4 +1,4 @@
 var topics =
 [
-    [ "Opérations sur les grands entiers", "group__largeint__ops.html", "group__largeint__ops" ]
+    [ "Fonctions sur les grands entiers", "group__largeint__func.html", "group__largeint__func" ]
 ];

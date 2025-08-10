@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['entiers_0',['Opérations sur les grands entiers',['../group__largeint__ops.html',1,'']]]
+  ['affichage_0',['Fonctions liées à l&apos;affichage',['../group__largeint__func__aff.html',1,'']]]
 ];

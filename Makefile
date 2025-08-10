@@ -17,6 +17,7 @@ EXEC = $(BINDIR)/main
 CC = gcc
 
 # Options de compilations
+# CFLAGS = $(shell cat compile_flags.txt)
 CFLAGS = -Wall -Wextra -Wvla -fsanitize=address
 
 # Règle principale
@@ -41,7 +42,7 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.c
 # Nettoyer les fichiers générés
 clean:
 	rm -f $(BUILDDIR)/*
-	rm -f $(BUILDDIR)/*
+	rm -f $(BINDIR)/*
 
 run:
 	@echo -e "==========================================\n"
