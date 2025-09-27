@@ -2,8 +2,8 @@
 
 #show: doc => template(
   doc,
-  title: "TIPE",
-  subtitle: "Cryptographie sur les courbes elliptiques",
+  title: "Cryprographie sur les courbes elliptiques",
+  subtitle: "TIPE",
 )
 
 = Les courbes elliptiques
