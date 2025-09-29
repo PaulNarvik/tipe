@@ -31,14 +31,22 @@
 ]
 
 #defi("Plan projectif", [
-  Soit $KK$ un corps, on appelle plan projectif l'ensemble des classes d'équivalence :
+  Soit $KK$ un corps, on appelle plan projectif l'ensemble des classes d'équivalence pour la relation $cal(R)$, noté :
 
   $ PP^2(KK) = (KK^3 without {(0, 0, 0)}) slash cal(R) $
 ])
 
 Cela revient à projeter l'espace sur une demi-sphère centrée en (0, 0, 0), où chaque classe d'équivalence correspond à une droite passant par l'origine et un unique point de la demi-sphère, soit en dimension deux :
 
-#todo[Schéma ]
+#figcan(caption: "Représentation de l'espace projectif en dimension deux.", {
+  import draw: *
+  arrow((-3, 0), (3, 0))
+  arrow((0, -1), (0, 3))
+  arc((2, 0), start: 0deg, stop: 180deg, radius: 2, stroke: 1pt + blue)
+  line((-3, -1), (3, 1), stroke: 1pt + red)
+})
+
+#todo[finir schéma]
 
 #defi("Courbe elliptique", "")
 
