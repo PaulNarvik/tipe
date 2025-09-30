@@ -48,6 +48,18 @@ Cela revient à projeter l'espace sur une demi-sphère centrée en (0, 0, 0), o�
 
 #todo[finir schéma]
 
-#defi("Courbe elliptique", "")
+#defi("Courbe elliptique", [
+  On appelle courbe elliptique sur un corps $KK$, l'ensemble des solutions dans le plan projectif $PP^2(KK)$ de l'équation $F(X, Y, Z) = 0$, où $F$ est un polynôme homogène de degré 3 en 3 variables.
 
-#prop("", "")
+  Formellement, pour $F$ polynôme homogène de $KK_3[X, Y, Z]$, on note :
+
+  $ E(KK) = {(x, y, z) in PP^2(KK) , F(x, y, z) = 0} $
+
+  En l'absence d'ambiguïté sur le corps, on notera indistinctement $E(KK$) et $E$ les courbes elliptiques.
+])
+
+#defi("Point singulier", [
+  Un point $P = (x, y, z)$ d'une courbe elliptique est dit singulier lorsque :
+
+  $ ((diff F) / (diff X)(P), (diff F) / (diff Y)(P), (diff F) / (diff Z)(P)) = (0, 0, 0) $
+])
