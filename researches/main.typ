@@ -11,11 +11,11 @@
 == Définition des courbes elliptiques
 
 #lemm("", [
-  La relation $cal(R)$, définie sur $KK^3 without {(0, 0, 0)}$ par :
+  La relation $tilde$, définie sur $KK^n without {(0, ..., 0)}$ par :
 
   $
-    forall ((a, b, c), (a' ,b', c')) in (KK^3 without {(0, 0, 0)})^2,\
-    (a, b, c) cal(R) (a', b', c') equ (exists lambda in KK without {0}, (a, b, c) = lambda (a', b', c'))
+    forall ((a_1, ..., a_n), (a'_1 ,... , a'_n)) in (KK^n without {(0, ..., 0)})^2,\
+    (a_1, ..., a_n) tilde (a'_1, ..., a'_n) equ (exists lambda in KK without {0}, (a_1, ..., a_n) = lambda (a'_1, ..., a'_n))
   $
 
   est une relation d'équivalence.
@@ -23,24 +23,26 @@
 
 #preu[
   Par définition d'un corps, on a :
-  - $cal(R)$ est réflexive car $1 in KK$
-  - $cal(R)$ est symétrique car pour tout $lambda$ dans $KK without {0}$, $lambda^(-1) in KK$
-  - $cal(R)$ est transitive car pour tous $lambda, mu in KK, lambda mu in KK$
+  - $1 in KK$ donc $tilde$ est réflexive
+  - Pour tout $lambda in KK without {0}$, $lambda^(-1) in KK$ donc $tilde$ est symétrique
+  - Pour tous $lambda, mu in KK without {0}$, $lambda mu in KK$ donc $tilde$ est transitive.
 
-  Donc $cal(R)$ est une relation d'équivalence.
+  Conclusion, $tilde$ est une relation d'équivalence.
 ]
 
-#defi("Plan projectif", [
-  Soit $KK$ un corps, on appelle *plan projectif* l'ensemble des classes d'équivalence pour la relation $cal(R)$, noté :
+#defi("Espace projectif", [
+  Soit $KK$ un corps, on appelle *espace projectif de dimension n* l'ensemble des classes d'équivalence pour la relation $tilde$, noté :
 
-  $ PP^2(KK) = (KK^3 without {(0, 0, 0)}) slash cal(R) $
+  $ PP^n (KK) = (KK^(n+1) without {(0, ..., 0)}) slash tilde $
 
-  Pour $P = (x, y, z) in KK without{(0, 0, 0)}$, on notera $[x : y : z]$ la *classe d'équivalence* de $P$ pour la relation $cal(R)$.
+  Pour $P = (x_1, ..., x_(n+1)) in KK without{(0, ..., 0)}$, on notera $[x_1 : ... : x_(n+1)]$ la *classe d'équivalence* de $P$ pour la relation $tilde$.
+
+  On appellera en particulier *plan projectif* l'espace projectif de dimension 2.
 ])
 
 Cela revient à projeter l'espace sur une demi-sphère centrée en (0, 0, 0), où chaque classe d'équivalence correspond à une droite passant par l'origine et un unique point de la demi-sphère, soit en dimension 1 :
 
-#figcan(caption: "Représentation de l'espace projectif en dimension deux.", {
+#figcan(caption: "Représentation de l'espace projectif de dimension 1.", {
   import draw: *
   arrow((-3, 0), (3, 0))
   arrow((0, -1), (0, 3))
@@ -64,7 +66,7 @@ On remarque en particulier que si $P$ est un polynôme homogène en trois variab
 
 $ forall (x', y', z') in [x : y : z], P(x', y', z') = lambda^d P(x, y, z) = 0 $
 
-Dans le plan projectif, l'annulation du polynôme ne dépend donc pas du représentant choisi.
+Dans le plan projectif, l'annulation d'un polynôme homogène ne dépend donc pas du représentant choisi.
 
 #defi("Courbe elliptique", [
   On appelle *courbe elliptique sur un corps $KK$*, l'ensemble des solutions dans le plan projectif $PP^2(KK)$ de l'équation $F(X, Y, Z) = 0$, où $F$ est un polynôme homogène de degré 3 en trois variables à coefficients dans $KK$.
@@ -88,8 +90,48 @@ Dans le plan projectif, l'annulation du polynôme ne dépend donc pas du représ
 
 Par la suite, nous ne considérerons que des courbes elliptiques non singulières définies sur un corps $KK$ de caractéristique différente de 2 ou 3.
 
-#prop("Mise sous forme de Weierstrass", [
-  Soit $E$ une courbe elliptique. Un changement de coordonnées permet d'exprimer le polynôme $F$ associé sous *forme normale de Weierstrass*:
+#defi("Tangente", [
+  Soit $E$ une courbe elliptique, et $P in E$ un point non singulier. Alors la *tangente à $E$ en $P$* est donnée par :
 
-  $ F(X, Y, Z) = Y^2 Z + a_1 Y X Z + a_3 Y Z^2 - (X^3 + a_2 X^2 Z + a_4 X Z^2 + a_6 Z^4) $ <eq:FormeNormWeier>
+  $ (diff F) / (diff X) (P) (X - X_P) + (diff F) / (diff Y) (P) (Y - Y_P) + (diff F) / (diff Z) (P) (Z - Z_P) = 0 $
 ])
+
+#defi("Point d'inflexion", [
+  Soit $E$ une courbe elliptique, on dit qu'un point $P in E$ est un *point d'inflexion* si la tangente à $E$ en $P$ intersecte $E$ en $P$ avec une multiplicité égale à 3.
+])
+
+#prop("")[
+  Soit $E$ une courbe elliptique non singulière sur $KK$. Soit $P$ un point d'inflexion de $E$.
+
+  Alors un changement de variables linéaire inversible permet de transformer $P$ en $[0 : 1: 0]$ et la tangente en $P$ en $Z = 0$.
+]
+
+#preu()[
+  Soit $L$ la tangente à $E$ en $P = [x_P : y_P : z_P]$.
+  Soit $Q = [x_Q : y_Q : z_Q] in L without E$, les vecteurs $(x_P, y_P, z_P)$ et $x_Q, y_Q, z_Q)$ sont linéairement indépendants car $P$ et $Q$ correspondent à deux points distincts du plan projectif.
+
+  On complète avec un vecteur $C$ en une base de $KK^3$. On obtient alors :
+  $
+    M = mat(
+      x_Q, x_P, ;
+      y_Q, y_P, C;
+      z_Q, z_P, ;
+    )
+  $
+
+  $M$ est inversible. $M^(-1)$ envoie $P$ sur le point $[0 : 1 : 0]$ et $Q$ sur le point $[1 : 0 : 0]$. Donc $M^(-1)$ envoie $L$ sur $Z = 0$ car c'est l'unique droite passant par $P$ et $Q$.
+]
+
+#theo("Mise sous forme de Weierstrass")[
+  Soit $E$ une courbe elliptique non singulière. Soit $cal(O)$ un point d'inflexion de $E$, si $cal(O) = [0 : 1 : 0]$ et la tangente à $E$ en $cal(O)$ est $Z = 0$, alors $E$ est de la forme:
+
+  $ Y^2 Z + a_1 Y X Z + a_3 Y Z^2 - (X^3 + a_2 X^2 Z + a_4 X Z^2 + a_6 Z^4) $ <eq:FormeNormWeier>
+]
+
+#preu[
+  La forme générale du polynôme qui définit une courbe elliptique est :
+
+  $ P(X, Y, Z) = a X^3 + b Y^3 + c Z^3 + d X^2 Y + e X^2 Z + f Y^2 X + g Y^2 Z + h Z^2 X + i Z^2 Y + j X Y Z $
+
+  Montrons que certains termes s'annulent.
+]

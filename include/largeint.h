@@ -112,6 +112,7 @@ void largeint_print_base(largeint *ptr);
 /** @} */
 
 /**
+ * @defgroup largeint_func_calc Fonctions liées aux calculs
  * @brief Additionne deux grands entiers et place le résultat derrière le
 pointeur donné.
  * @param result Le pointeur derrière lequel stocker la somme.
@@ -133,6 +134,7 @@ void largeint_add(largeint *result, largeint *ptr1, largeint *ptr2);
  */
 void largeint_multiply(largeint *result, largeint *ptr1, largeint *ptr2);
 
+/** @} */
 /** @} */
 
 #endif
