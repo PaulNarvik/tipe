@@ -20,8 +20,6 @@
   - $1 in KK$ donc $tilde$ est réflexive
   - Pour tout $lambda in KK without {0}$, $lambda^(-1) in KK$ donc $tilde$ est symétrique
   - Pour tous $lambda, mu in KK without {0}$, $lambda mu in KK$ donc $tilde$ est transitive.
-
-  Conclusion, $tilde$ est une relation d'équivalence.
 ]
 
 #defi("Espace projectif", [
@@ -36,19 +34,21 @@
 
 Cela revient à projeter l'espace sur une demi-sphère centrée en (0, 0, 0), où chaque classe d'équivalence correspond à une droite passant par l'origine et un unique point de la demi-sphère, soit en dimension 1 :
 
-#figcan(caption: "Représentation de l'espace projectif de dimension 1.", {
-  import draw: *
-  arrow((-3, 0), (3, 0), style: 0.5pt + black)
-  arrow((0, -1), (0, 2.5), style: 0.5pt + black)
-  arc((2, 0), start: 0deg, stop: 180deg, radius: 2, stroke: 1pt + blue)
-  line((-3, -1), (-0.1, -0.033), stroke: 1pt + red)
-  line((0.1, 0.033), (3, 1), stroke: 1pt + red)
-  circle((0, 0), radius: 0.1, stroke: 1pt + red)
-  circle((1.90, 0.63), radius: 0.05, fill: black)
-  content((2.2, 0.4), "P")
-  content((4, 1.4), "Classe d'équivalence de P")
-  content((-4, 1), "Représentants principaux")
-})
+// #figcan(caption: "Représentation de l'espace projectif de dimension 1.", {
+//   import draw: *
+//   arrow((-3, 0), (3, 0), style: 0.5pt + black)
+//   arrow((0, -1), (0, 2.5), style: 0.5pt + black)
+//   arc((2, 0), start: 0deg, stop: 180deg, radius: 2, stroke: 1pt + blue)
+//   line((-3, -1), (-0.1, -0.033), stroke: 1pt + red)
+//   line((0.1, 0.033), (3, 1), stroke: 1pt + red)
+//   circle((0, 0), radius: 0.1, stroke: 1pt + red)
+//   circle((1.90, 0.63), radius: 0.05, fill: black)
+//   content((2.2, 0.4), "P")
+//   content((4, 1.4), "Classe d'équivalence de P")
+//   content((-4, 1), "Représentants principaux")
+// })
+
+#todo[Réparer mon paquet, la mise-à-jour l'a détruit]
 
 #defi("Polynôme homogène", [
   Un *polynôme homogène* est un polynôme en plusieurs indéterminées dont tous les monômes non nuls sont de même degré total.
@@ -74,14 +74,18 @@ Dans le plan projectif, l'annulation d'un polynôme homogène ne dépend donc pa
   En l'absence d'ambiguïté sur le corps, on notera indistinctement $E(KK$) et $E$ les courbes elliptiques considérées.
 ])
 
+On notera que multiplier le polynôme par un scalaire non nul ne change pas la courbe elliptique considérée.
+
 #defi("Singularité", [
   Un point $P = [x : y : z]$ d'une courbe elliptique est dit *singulier* lorsque :
 
-  $ ((diff F) / (diff X)(P), (diff F) / (diff Y)(P), (diff F) / (diff Z)(P)) = (0, 0, 0) $
+  $ ((partial F) / (partial X)(P), (partial F) / (partial Y)(P), (partial F) / (partial Z)(P)) = (0, 0, 0) $
 
   On dira d'une courbe elliptique qu'elle est *lisse* (ou  *non singulière*) si elle ne possède aucun point singulier, soit :
 
-  $ forall P in E(KK), ((diff F) / (diff X)(P), (diff F) / (diff Y)(P), (diff F) / (diff Z)(P)) = (0, 0, 0) $
+  $
+    forall P in E(KK), ((partial F) / (partial X)(P), (partial F) / (partial Y)(P), (partial F) / (partial Z)(P)) = (0, 0, 0)
+  $
 ])
 
 Par la suite, nous ne considérerons que des courbes elliptiques non singulières définies sur un corps $KK$ de caractéristique différente de 2 ou 3.
@@ -89,7 +93,9 @@ Par la suite, nous ne considérerons que des courbes elliptiques non singulière
 #defi("Tangente", [
   Soit $E$ une courbe elliptique, et $P in E$ un point non singulier. Alors la *tangente à $E$ en $P$* est donnée par :
 
-  $ (diff F) / (diff X) (P) (X - X_P) + (diff F) / (diff Y) (P) (Y - Y_P) + (diff F) / (diff Z) (P) (Z - Z_P) = 0 $
+  $
+    (partial F) / (partial X) (P) (X - X_P) + (partial F) / (partial Y) (P) (Y - Y_P) + (partial F) / (partial Z) (P) (Z - Z_P) = 0
+  $
 ])
 
 #defi("Point d'inflexion", [
@@ -123,7 +129,7 @@ Par la suite, nous ne considérerons que des courbes elliptiques non singulière
 #theo("Mise sous forme de Weierstrass")[
   Soit $E$ une courbe elliptique non singulière. Soit $cal(O)$ un point d'inflexion de $E$, si $cal(O) = [0 : 1 : 0]$ et si la tangente à $E$ en $cal(O)$ est $Z = 0$, alors $E$ est de la forme:
 
-  $ Y^2 Z + a_1 Y X Z + a_3 Y Z^2 - (X^3 + a_2 X^2 Z + a_4 X Z^2 + a_6 Z^4) $ <eq:FormeNormWeier>
+  $ Y^2 Z + a_1 Y X Z + a_3 Y Z^2 - (X^3 + a_2 X^2 Z + a_4 X Z^2 + a_6 Z^4) $
 ]
 
 #preu[
@@ -135,5 +141,54 @@ Par la suite, nous ne considérerons que des courbes elliptiques non singulière
 
   - F([0 : 1 : 0]) = 0 donc $b = 0$.
 
-  - La tangente à $E$ en $[0 : 1 : 0]$ est $Z = 0$, donc $(diff F) / (diff X) ([0 : 1 : 0]) = f = 0$ et $(diff F) / (diff Z) ([0 : 1 : 0]) = 3c eq.not 0$
+  - La tangente à $E$ en $[0 : 1 : 0]$ est $Z = 0$, donc $(partial F) / (partial X) ([0 : 1 : 0]) = f = 0$ et $(partial F) / (partial Z) ([0 : 1 : 0]) = g eq.not 0$
+  - L'intersection de la tangente $Z = 0$ en $cal(O)$ avec la courbe est donnée par l'équation $a X^3 + d X^2 Y = 0$, pour avoir ensuite $cal(O)$ point d'inflexion, il faut que ce point soit racine triple de $F(X : 1 : 0) = a X^3 + d X^2$, soit $d = 0$.
+  - On admet pour l'instant que $a = 0$
+
+  On choisit comme $a eq.not 0$ un représentant de $F$ ayant un coefficient $1$ devant $X^3$. On a alors $F(X, Y, Z) = X^3 + alpha Z^3 + beta X^2 Z + gamma Y^2 Z + delta Z^2 X + epsilon Z^2 Y + zeta X Y Z; gamma eq.not 0$.
+
+  On pose alors le changement de variables $Z' = -Z/gamma$, on obtient $F$ sous forme de Weierstrass.
 ]
+
+#todo[Ne plus admettre :-)]
+
+== Forme de Weierstrass réduite
+
+#theo("Mise sous forme réduite de Weierstrass")[
+  Si $"Car"(K) eq.not 2, 3$, on peut mettre une courbe elliptique sous forme de Weierstrass réduite :
+
+  $ Y^2Z = X^3 + a X Z^2 + b Z^3 $ <eq:WeierProj>
+]
+
+#preu[
+  Soit $E$ une courbe elliptique sous forme de Weierstrass, on pose $Y' = Y - 1/2 (a_1 X + a_3)$ et $X' = X - (a_1^2 + 4 a_2) / 12 Z$, valable par hypothèse sur la caractéristique. On arrive alors à la forme souhaitée.
+]
+
+#todo[Le vérifier à la main]
+
+#coro("Forme réduite affine")[
+  #v(5pt)
+  En coordonnées non homogènes ($x = X /Z$ et $y = Y / Z$), on peut écrire cette équation :
+
+  $ E : y^2 = x^3 +a x + b $ <eq:WeierAff>
+
+  Ainsi que le point $cal(O) = [0 : 1 : 0]$ qui est le seul point à l'infini.
+]
+
+#prop("Critère de singularité")[
+  Soit $E$ une équation sous forme de Weierstrass, alors $E$ est singulière si et seulement si la quantité $Delta := 4 a^3 + 27 b^2$ est nulle.
+]
+
+#preu[
+  $E$ est une courbe de $PP^2 (KK)$ donnée par l'équation :
+
+  $ F(X, Y, Z) = Y^2 Z - X^3 - a X Z^2 + b Z^3 $
+
+  Montrons d'abord que le point à l'infini n'est jamais singulier, $(partial F) / (partial Z) = Y^2 - 2 a X Z - 3 b Z^2$, donc $(partial F) / (partial Z)(cal(O)) = 1 eq.not 0$.
+
+  Passons alors en coordonnées affines :
+
+  $ E : f(x, y) = y^2 - x^3 - a x - b = 0 $
+]
+
+#todo[Reprendre cette preuve]
