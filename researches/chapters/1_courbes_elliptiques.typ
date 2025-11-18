@@ -34,21 +34,18 @@
 
 Cela revient à projeter l'espace sur une demi-sphère centrée en (0, 0, 0), où chaque classe d'équivalence correspond à une droite passant par l'origine et un unique point de la demi-sphère, soit en dimension 1 :
 
-// #figcan(caption: "Représentation de l'espace projectif de dimension 1.", {
-//   import draw: *
-//   arrow((-3, 0), (3, 0), style: 0.5pt + black)
-//   arrow((0, -1), (0, 2.5), style: 0.5pt + black)
-//   arc((2, 0), start: 0deg, stop: 180deg, radius: 2, stroke: 1pt + blue)
-//   line((-3, -1), (-0.1, -0.033), stroke: 1pt + red)
-//   line((0.1, 0.033), (3, 1), stroke: 1pt + red)
-//   circle((0, 0), radius: 0.1, stroke: 1pt + red)
-//   circle((1.90, 0.63), radius: 0.05, fill: black)
-//   content((2.2, 0.4), "P")
-//   content((4, 1.4), "Classe d'équivalence de P")
-//   content((-4, 1), "Représentants principaux")
-// })
-
-#todo[Réparer mon paquet, la mise-à-jour l'a détruit]
+#figcan(caption: "Représentation de l'espace projectif de dimension 1.", {
+  arrow_fig((-3, 0), (3, 0), style: 0.5pt + black)
+  arrow_fig((0, -1), (0, 2.5), style: 0.5pt + black)
+  arc((2, 0), start: 0deg, stop: 180deg, radius: 2, stroke: 1pt + blue)
+  line((-3, -1), (-0.1, -0.033), stroke: 1pt + red)
+  line((0.1, 0.033), (3, 1), stroke: 1pt + red)
+  circle((0, 0), radius: 0.1, stroke: 1pt + red)
+  circle((1.90, 0.63), radius: 0.05, fill: black)
+  content((2.2, 0.4), "P")
+  content((4, 1.4), "Classe d'équivalence de P")
+  content((-4, 1), "Représentants principaux")
+})
 
 #defi("Polynôme homogène", [
   Un *polynôme homogène* est un polynôme en plusieurs indéterminées dont tous les monômes non nuls sont de même degré total.
@@ -129,7 +126,7 @@ Par la suite, nous ne considérerons que des courbes elliptiques non singulière
 #theo("Mise sous forme de Weierstrass")[
   Soit $E$ une courbe elliptique non singulière. Soit $cal(O)$ un point d'inflexion de $E$, si $cal(O) = [0 : 1 : 0]$ et si la tangente à $E$ en $cal(O)$ est $Z = 0$, alors $E$ est de la forme:
 
-  $ Y^2 Z + a_1 Y X Z + a_3 Y Z^2 - (X^3 + a_2 X^2 Z + a_4 X Z^2 + a_6 Z^4) $
+  $ Y^2 Z + a_1 Y X Z + a_3 Y Z^2 - (X^3 + a_2 X^2 Z + a_4 X Z^2 + a_6 Z^3) $
 ]
 
 #preu[
@@ -143,11 +140,13 @@ Par la suite, nous ne considérerons que des courbes elliptiques non singulière
 
   - La tangente à $E$ en $[0 : 1 : 0]$ est $Z = 0$, donc $(partial F) / (partial X) ([0 : 1 : 0]) = f = 0$ et $(partial F) / (partial Z) ([0 : 1 : 0]) = g eq.not 0$
   - L'intersection de la tangente $Z = 0$ en $cal(O)$ avec la courbe est donnée par l'équation $a X^3 + d X^2 Y = 0$, pour avoir ensuite $cal(O)$ point d'inflexion, il faut que ce point soit racine triple de $F(X : 1 : 0) = a X^3 + d X^2$, soit $d = 0$.
-  - On admet pour l'instant que $a = 0$
+  - On admet pour l'instant que $a eq.not 0$
 
-  On choisit comme $a eq.not 0$ un représentant de $F$ ayant un coefficient $1$ devant $X^3$. On a alors $F(X, Y, Z) = X^3 + alpha Z^3 + beta X^2 Z + gamma Y^2 Z + delta Z^2 X + epsilon Z^2 Y + zeta X Y Z; gamma eq.not 0$.
+    Supposons $a = 0$, on se place alors dans le plan $Z = 0$. Donc : $ (partial F) / (partial X) = 3 a X^2, (partial F) / (partial Z) = e X^2 + j X Y + g Y^2 $
 
-  On pose alors le changement de variables $Z' = -Z/gamma$, on obtient $F$ sous forme de Weierstrass.
+  On choisit alors un représentant de $F$ ayant un coefficient $1$ devant $X^3$ (possible car $a eq.not 0$). Ainsi, $F(X, Y, Z) = X^3 + alpha Z^3 + beta X^2 Z + gamma Y^2 Z + delta Z^2 X + epsilon Z^2 Y + zeta X Y Z; gamma eq.not 0$.
+
+  On pose ensuite le changement de variables $Z' = -Z/gamma$, on obtient $F$ sous forme de Weierstrass.
 ]
 
 #todo[Ne plus admettre :-)]
@@ -161,10 +160,19 @@ Par la suite, nous ne considérerons que des courbes elliptiques non singulière
 ]
 
 #preu[
-  Soit $E$ une courbe elliptique sous forme de Weierstrass, on pose $Y' = Y - 1/2 (a_1 X + a_3)$ et $X' = X - (a_1^2 + 4 a_2) / 12 Z$, valable par hypothèse sur la caractéristique. On arrive alors à la forme souhaitée.
+  Soit $E$ une courbe elliptique sous forme de Weierstrass, on pose d'abord pour annuler le terme en $X Y Z$ :
+
+  $ X' = X, Y' = Y + a_1 /2 X, Z' = Z $
+
+  Puis pour éliminer les termes en $X^2$ et $Y$ :
+
+  $ X' = X + a_2 / 3, Y' = Y + a_3 / 2, Z' = Z $
+
+  On arrive alors à la forme souhaitée, on note que ces changements de variables sont possibles grâce à l'hypothèse sur la caractéristique.
 ]
 
-#todo[Le vérifier à la main]
+#todo[Le faire à la main au moins une fois]
+
 
 #coro("Forme réduite affine")[
   #v(5pt)
@@ -184,11 +192,27 @@ Par la suite, nous ne considérerons que des courbes elliptiques non singulière
 
   $ F(X, Y, Z) = Y^2 Z - X^3 - a X Z^2 + b Z^3 $
 
-  Montrons d'abord que le point à l'infini n'est jamais singulier, $(partial F) / (partial Z) = Y^2 - 2 a X Z - 3 b Z^2$, donc $(partial F) / (partial Z)(cal(O)) = 1 eq.not 0$.
+  D'abord, $(partial F) / (partial Z)(cal(O)) = 1 eq.not 0$.
 
-  Passons alors en coordonnées affines :
+  Passons maintenant en coordonnées affines :
 
   $ E : f(x, y) = y^2 - x^3 - a x - b = 0 $
+
+  Si $P = (x_0, y_0)$ est un point singulier, alors $(partial f) / (partial y)(P) = 2y_0 = 0$, donc $y_0 = 0$ comme $"Car"(K) eq.not 2$.
+
+  $(partial f) / (partial x)(P) = 3 x_0^2 - a = 0$, donc $x_0^2 = - a / 3$. D'où $y_0^2 = 0 = x_0^3 +a x_0 + b = 2/3 a x_0 + b$.
+
+  On en déduit $x_0^2 = (9 b^2) / (4 a^2) = -a / 3$. D'où $Delta := 4 a^3 + 27 b^2 = 0$.
 ]
 
-#todo[Reprendre cette preuve]
+== Structure de groupe abélien
+
+#prop("intersections avec une droite")[
+  Soient $E$ une courbe elliptique et $L$ une droite définies sur un corps $KK$.
+
+  Si $E$ a au moins deux points d'intersection (comptés avec multiplicité) avec la droite $L$, alors $E$ a exactement trois points d'intersection (comptés avec leur multiplicité) avec la droite $L$
+]
+
+#preu[
+
+]
