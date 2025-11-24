@@ -140,9 +140,18 @@ Par la suite, nous ne considérerons que des courbes elliptiques non singulière
 
   - La tangente à $E$ en $[0 : 1 : 0]$ est $Z = 0$, donc $(partial F) / (partial X) ([0 : 1 : 0]) = f = 0$ et $(partial F) / (partial Z) ([0 : 1 : 0]) = g eq.not 0$
   - L'intersection de la tangente $Z = 0$ en $cal(O)$ avec la courbe est donnée par l'équation $a X^3 + d X^2 Y = 0$, pour avoir ensuite $cal(O)$ point d'inflexion, il faut que ce point soit racine triple de $F(X : 1 : 0) = a X^3 + d X^2$, soit $d = 0$.
-  - On admet pour l'instant que $a eq.not 0$
+  - #result[
 
-    Supposons $a = 0$, on se place alors dans le plan $Z = 0$. Donc : $ (partial F) / (partial X) = 3 a X^2, (partial F) / (partial Z) = e X^2 + j X Y + g Y^2 $
+      On admet pour l'instant que $a eq.not 0$
+
+      Supposons $a = 0$, on se place alors dans le plan $Z = 0$. Donc : $ (partial F) / (partial X) = 3 a X^2, (partial F) / (partial Z) = e X^2 + j X Y + g Y^2 $
+
+      Montrons alors que ce polynôme peut s'annuler.
+
+      Le problème que je rencontre est que les papiers que je trouve sur le sujet utilise le fait que $KK$ est un corps algébriquement clos, avant de faire les calculs suivants dans $FF_p$.
+
+      Je ne sais pas si cela est gênant ou si le supposer est une véritable perte d'un point de vue théorique.
+    ]
 
   On choisit alors un représentant de $F$ ayant un coefficient $1$ devant $X^3$ (possible car $a eq.not 0$). Ainsi, $F(X, Y, Z) = X^3 + alpha Z^3 + beta X^2 Z + gamma Y^2 Z + delta Z^2 X + epsilon Z^2 Y + zeta X Y Z; gamma eq.not 0$.
 
@@ -171,7 +180,7 @@ Par la suite, nous ne considérerons que des courbes elliptiques non singulière
   On arrive alors à la forme souhaitée, on note que ces changements de variables sont possibles grâce à l'hypothèse sur la caractéristique.
 ]
 
-#todo[Le faire à la main au moins une fois]
+#todo[Le refaire à la main au moins une fois]
 
 
 #coro("Forme réduite affine")[
@@ -190,7 +199,7 @@ Par la suite, nous ne considérerons que des courbes elliptiques non singulière
 #preu[
   $E$ est une courbe de $PP^2 (KK)$ donnée par l'équation :
 
-  $ F(X, Y, Z) = Y^2 Z - X^3 - a X Z^2 + b Z^3 $
+  $ F(X, Y, Z) = Y^2 Z - X^3 - a X Z^2 - b Z^3 $
 
   D'abord, $(partial F) / (partial Z)(cal(O)) = 1 eq.not 0$.
 
@@ -207,6 +216,8 @@ Par la suite, nous ne considérerons que des courbes elliptiques non singulière
 
 == Structure de groupe abélien
 
+=== Prémices
+
 #prop("intersections avec une droite")[
   Soient $E$ une courbe elliptique et $L$ une droite définies sur un corps $KK$.
 
@@ -214,5 +225,15 @@ Par la suite, nous ne considérerons que des courbes elliptiques non singulière
 ]
 
 #preu[
-
+  On prend $E$ sous forme de Weierstrass, $E : F(X, Y, Z) = Y^2 Z - X^3 -a X Z^2 - b Z^3 = 0$. $L$ est satisfait l'équation $alpha X + beta Y + gamma Z = 0$. Sans perte de généralité, on peut supposer que $alpha eq.not 0$ et que l'équation est alors $X = - beta' Y - gamma' Z$. Le polynôme $P(Y, Z) = F(-beta' Y - gamma' Z, Y, Z)$ est un polynôme admettant
 ]
+
+#todo[
+  Racine réelle ?
+  Et si verticale ?
+  Preuve mat562 avec 4 racines ou + => nul ?
+]
+
+=== Approche géométrique
+
+=== Approche analytique

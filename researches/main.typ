@@ -2,7 +2,7 @@
 
 #show: doc => template(
   doc,
-  title: "Cryprographie sur les courbes elliptiques",
+  title: "Cryptographie sur les courbes elliptiques",
   subtitle: "TIPE",
 )
 
