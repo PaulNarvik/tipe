@@ -1,58 +1,59 @@
-# Définir les répertoires
+# --- Répertoires ---
 SRCDIR = src
 BUILDDIR = build
 BINDIR = bin
 INCDIR = include
 
-# Trouver tous les fichiers source (.c) dans src
-SRC = $(wildcard $(SRCDIR)/*.c)
+# --- Fichiers source et objets ---
+SRC = $(wildcard $(SRCDIR)/*.cpp)
+OBJ = $(patsubst $(SRCDIR)/%.cpp, $(BUILDDIR)/%.o, $(SRC))
 
-# Générer la liste des fichiers objets (.o) dans build
-OBJ = $(patsubst $(SRCDIR)/%.c, $(BUILDDIR)/%.o, $(SRC))
-
-# Nom de l'exécutable (modifiable selon tes besoins)
+# --- Exécutable ---
 EXEC = $(BINDIR)/main
 
-# Compilateur
-CC = gcc
+# --- Compilateur ---
+CXX = g++
 
-# Options de compilations
-# CFLAGS = $(shell cat compile_flags.txt)
-CFLAGS = -Wall -Wextra -Wvla -fsanitize=address
+# --- Options de compilation ---
+CXXFLAGS = -Wall -Wextra -Wpedantic -fsanitize=address -std=c++20
+# Optionnel : si tes headers GMP sont dans /usr/local/include
+# CXXFLAGS += -I/usr/local/include
 
-# Règle principale
+# --- Bibliothèques à lier ---
+LDFLAGS = -lgmp -lgmpxx
+# Optionnel : si la lib est dans un dossier non standard
+# LDFLAGS += -L/usr/local/lib
+
+# --- Règle principale ---
 compile: $(BUILDDIR) $(BINDIR) $(EXEC)
 
-# Créer le répertoire build s'il n'existe pas
+# --- Créer les répertoires ---
 $(BUILDDIR):
 	mkdir -p $(BUILDDIR)
 
-# Créer le répertoire bin s'il n'existe pas
 $(BINDIR):
 	mkdir -p $(BINDIR)
 
-# Lier les fichiers objets pour créer l'exécutable
+# --- Lier ---
 $(EXEC): $(OBJ)
-	$(CC) $(CFLAGS) $^ -o $@ -I$(INCDIR)
+	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS) -I$(INCDIR)
 
-# Compiler chaque fichier source en fichier objet
-$(BUILDDIR)/%.o: $(SRCDIR)/%.c
-	$(CC) $(CFLAGS) -c $< -o $@ -I$(INCDIR)
+# --- Compiler ---
+$(BUILDDIR)/%.o: $(SRCDIR)/%.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@ -I$(INCDIR)
 
-# Nettoyer les fichiers générés
+# --- Nettoyage ---
 clean:
 	rm -f $(BUILDDIR)/*
 	rm -f $(BINDIR)/*
 
-run:
+# --- Exécuter ---
+run: compile
 	@echo -e "==========================================\n"
 	@./$(EXEC)
 
-docs: 
-	doxygen Doxyfile
-
+# --- Aide ---
 help:
-	@echo -e "Options possibles :\n- all pour compiler le projet\n- clean pour nettoyer le projet\n- run pour compiler puis exécuter\n- clean_comp pour nettoyer puis compiler\n- clean_run pour nettoyer, compiler puis exécuter"
+	@echo -e "Options possibles :\n- compile pour compiler\n- clean pour nettoyer\n- run pour compiler puis exécuter"
 
-# Indiquer que clean et run ne sont pas des fichiers
-.PHONY: compile clean run docs help
+.PHONY: compile clean run help
