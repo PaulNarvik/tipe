@@ -10,9 +10,11 @@ struct ellipticCurve {
   mpz_class b;
   mpz_class p;
 
-  ellipticCurve(const mpz_class &a, const mpz_class &p);
+  ellipticCurve(const mpz_class &a, const mpz_class &p,
+                const std::pair<mpz_class, mpz_class> &P);
 
-  void fixCoeffs(const std::pair<mpz_class, mpz_class> &point);
+  void fixCoeffs(const std::pair<mpz_class, mpz_class> &P);
+  mpz_class getDiscriminant();
 
   friend std::ostream &operator<<(std::ostream &os, ellipticCurve &E);
 };

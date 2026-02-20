@@ -3,30 +3,90 @@
 #include <gmp-x86_64.h>
 #include <gmpxx.h>
 #include <iostream>
+#include <utility>
 
 const int BIncr = 1;
-const int aIncr = 1;
+const int aIncr = 30;
 const int nbEssaisMax = 50;
-const int xInitial = 1;
-const int yInitial = 1;
+const mpz_class xInitial = 1;
+const mpz_class yInitial = 1;
+
+mpz_class calck(mpz_class &B) {
+  mpz_class k;
+  mpz_class Bsub = B - 1;
+  mpz_lcm(k.get_mpz_t(), B.get_mpz_t(), Bsub.get_mpz_t());
+  return k;
+}
 
 mpz_class trouverFacteur(mpz_class p, mpz_class B) {
   // Facteurs triviaux
   if (p % 2 == 0)
-    return 2;
+    return mpz_class(2);
   if (p % 3 == 0)
-    return 3;
+    return mpz_class(3);
 
   int nbEssais = 0;
+  bool nouvelleCourbe = false;
 
-  mpz_class Bsub = B - 1;
-  mpz_class k;
-  mpz_lcm(k.get_mpz_t(), B.get_mpz_t(), Bsub.get_mpz_t());
+  mpz_class delta, pgcd;
+  mpz_class k = calck(B);
+
+  ellipticCurve E(1, p, std::make_pair(xInitial, yInitial));
+  ellipticPoint P(xInitial, yInitial, E);
+
+  while (true) { // Changer pour concurrence
+    E.fixCoeffs(std::make_pair(P.x, P.y));
+    delta = E.getDiscriminant();
+    mpz_gcd(pgcd.get_mpz_t(), delta.get_mpz_t(), E.p.get_mpz_t());
+
+    while (pgcd != 1) {
+      if (pgcd < p)
+        return pgcd;
+      E.a += aIncr;
+      E.fixCoeffs(std::make_pair(xInitial, yInitial));
+      delta = E.getDiscriminant();
+      mpz_gcd(pgcd.get_mpz_t(), delta.get_mpz_t(), E.p.get_mpz_t());
+    }
+
+    if (nbEssais > nbEssaisMax)
+      nouvelleCourbe = true; // renvoie std::optionnal plus tard
+
+    try {
+      ellipticPoint Q = k * P; // Recrée à chaque fois !!!!!
+    } catch (const facteurTrouve &facteur) {
+      mpz_gcd(pgcd.get_mpz_t(), facteur.facteur.get_mpz_t(), E.p.get_mpz_t());
+
+      if (pgcd > 1 && pgcd < p)
+        return pgcd;
+    }
+
+    if (nouvelleCourbe) {
+      E.a = 1;
+      nbEssais = 0;
+      B += BIncr; // On change B qui est passé en argument, renvoyer et rappeler
+                  // depuis le tampon plus tard ?????
+      while (k == calck(B)) // Do while possible ?????
+        B += BIncr;
+      k = calck(B);
+    } else {
+      E.a += aIncr;
+      nbEssais++;
+    }
+  }
+
+  return 1;
 }
 
 int main(void) {
-  ellipticCurve E(1, 7);
-  std::cout << E.a << ", " << E.b << ", " << E.p << "\n";
-  // ellipticPoint P(1, 1, E);
-  // ellipticPoint Q = P + P;
+  mpz_class p, B;
+  mpz_set_str(p.get_mpz_t(), "134755010254579987971511", 10);
+  mpz_set_str(B.get_mpz_t(), "367091132971", 10);
+  std::cout << "À factoriser : " << p << "\n";
+
+  while (!mpz_probab_prime_p(p.get_mpz_t(), 20)) {
+    mpz_class facteur = trouverFacteur(p, B);
+    std::cout << "Facteur (premier) : " << facteur << "\n";
+    p /= facteur;
+  }
+  std::cout << "Facteur (p.s. premier) : " << p << "\n";
 }
