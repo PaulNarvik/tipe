@@ -1,6 +1,4 @@
 #include "ellipticCurve.hpp"
-#include <gmpxx.h>
-#include <utility>
 
 ellipticCurve::ellipticCurve(const mpz_class &a, const mpz_class &p,
                              const std::pair<mpz_class, mpz_class> &P) {
@@ -17,4 +15,10 @@ void ellipticCurve::fixCoeffs(const std::pair<mpz_class, mpz_class> &P) {
 
 mpz_class ellipticCurve::getDiscriminant() {
   return 4 * (this->a * this->a * this->a) + 27 * (this->b * this->b);
+}
+
+std::ostream &operator<<(std::ostream &os, ellipticCurve &E) {
+  os << "Paramètres de la courbe :\n- a = " << E.a << "\n- b = " << E.b
+     << "\n- p = " << E.p << "\n";
+  return os;
 }

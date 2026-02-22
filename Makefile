@@ -15,7 +15,9 @@ EXEC = $(BINDIR)/main
 CXX = g++
 
 # --- Options de compilation ---
-CXXFLAGS = -Wall -Wextra -Wpedantic -fsanitize=address -std=c++20
+CXXFLAGS = -Wall -Wextra -Wpedantic -std=c++20
+CXXFLAGS += -fsanitize=address -g # Debug
+# CXXFLAGS += -O3 # Run
 # Optionnel : si tes headers GMP sont dans /usr/local/include
 # CXXFLAGS += -I/usr/local/include
 
@@ -49,8 +51,8 @@ clean:
 
 # --- Exécuter ---
 run: compile
-	@echo -e "==========================================\n"
-	@./$(EXEC)
+	@echo -e "=========================================="
+	@/usr/bin/time -f "==========================================\nTemps d'exécution : %E s\nMémoire %M kb" ./$(EXEC)
 
 # --- Aide ---
 help:

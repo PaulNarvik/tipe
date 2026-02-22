@@ -1,7 +1,4 @@
 #include "ellipticPoint.hpp"
-#include <gmpxx.h>
-#include <iostream>
-#include <ostream>
 
 // Constructeurs
 ellipticPoint::ellipticPoint(bool infty, const ellipticCurve &E) {
