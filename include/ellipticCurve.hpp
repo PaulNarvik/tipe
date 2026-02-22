@@ -3,7 +3,6 @@
 #include <gmpxx.h>
 #include <iostream>
 #include <ostream>
-#include <utility>
 
 struct ellipticCurve {
   mpz_class a;

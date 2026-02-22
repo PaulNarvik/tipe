@@ -1,15 +1,13 @@
 #include "ellipticCurve.hpp"
 #include "ellipticPoint.hpp"
-#include <gmp-x86_64.h>
-#include <gmpxx.h>
-#include <iostream>
-#include <utility>
 
 const int BIncr = 1;
 const int aIncr = 30;
 const int nbEssaisMax = 50;
 const mpz_class xInitial = 1;
 const mpz_class yInitial = 1;
+
+extern int *primeArray(int n, int *c);
 
 mpz_class calck(mpz_class &B) {
   mpz_class k;
@@ -78,14 +76,14 @@ mpz_class trouverFacteur(mpz_class p, mpz_class B) {
 }
 
 int main(void) {
-  mpz_class p, B;
+  mpz_class p, B; // B en uint64_t
   mpz_set_str(p.get_mpz_t(), "134755010254579987971511", 10);
   mpz_set_str(B.get_mpz_t(), "367091132971", 10);
-  std::cout << "À factoriser : " << p << "\n";
+  std::cout << "À factoriser :           " << p << "\n";
 
   while (!mpz_probab_prime_p(p.get_mpz_t(), 20)) {
     mpz_class facteur = trouverFacteur(p, B);
-    std::cout << "Facteur (premier) : " << facteur << "\n";
+    std::cout << "Facteur (premier) :      " << facteur << "\n";
     p /= facteur;
   }
   std::cout << "Facteur (p.s. premier) : " << p << "\n";
