@@ -1,6 +1,8 @@
 #include "ellipticPoint.hpp"
 
 // Constructeurs
+ellipticPoint::ellipticPoint() = default;
+
 ellipticPoint::ellipticPoint(bool infty, const ellipticCurve &E) {
   this->x = 0;
   this->y = 0;
