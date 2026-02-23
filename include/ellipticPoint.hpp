@@ -15,12 +15,12 @@ struct ellipticPoint { // Encapsuler plus tard ????? (private etc etc)
   mpz_class x;
   mpz_class y;
   bool infty;
-  const ellipticCurve *curve;
+  ellipticCurve *curve;
 
   // Constructeurs
-  ellipticPoint();
-  ellipticPoint(bool infty, const ellipticCurve &E);
-  ellipticPoint(const mpz_class &x, const mpz_class &y, const ellipticCurve &E);
+  ellipticPoint(const mpz_class &p);
+  ellipticPoint(bool infty, ellipticCurve &E);
+  ellipticPoint(const mpz_class &x, const mpz_class &y, ellipticCurve &E);
 
   // Assignations :  Ajouter += etc ?
   ellipticPoint(const ellipticPoint &);
@@ -35,6 +35,9 @@ struct ellipticPoint { // Encapsuler plus tard ????? (private etc etc)
                                  const ellipticPoint &P2);
   friend ellipticPoint operator*(int k, const ellipticPoint &P);
   friend ellipticPoint operator*(mpz_class k, const ellipticPoint &P);
+
+  // Utilitaire
+  void randomPointAndCurve(gmp_randclass &rng);
 
   // Affichage
   friend std::ostream &operator<<(std::ostream &os, ellipticPoint P);
