@@ -18,6 +18,7 @@ struct ellipticPoint { // Encapsuler plus tard ????? (private etc etc)
   const ellipticCurve *curve;
 
   // Constructeurs
+  ellipticPoint();
   ellipticPoint(bool infty, const ellipticCurve &E);
   ellipticPoint(const mpz_class &x, const mpz_class &y, const ellipticCurve &E);
 

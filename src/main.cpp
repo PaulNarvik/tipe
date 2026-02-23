@@ -31,6 +31,7 @@ mpz_class trouverFacteur(mpz_class p, mpz_class B) {
 
   ellipticCurve E(1, p, std::make_pair(xInitial, yInitial));
   ellipticPoint P(xInitial, yInitial, E);
+  ellipticPoint Q;
 
   while (true) { // Changer pour concurrence
     E.fixCoeffs(std::make_pair(P.x, P.y));
@@ -50,7 +51,7 @@ mpz_class trouverFacteur(mpz_class p, mpz_class B) {
       nouvelleCourbe = true; // renvoie std::optionnal plus tard
 
     try {
-      ellipticPoint Q = k * P; // Recrée à chaque fois !!!!!
+      Q = k * P;
     } catch (const facteurTrouve &facteur) {
       mpz_gcd(pgcd.get_mpz_t(), facteur.facteur.get_mpz_t(), E.p.get_mpz_t());
 
@@ -61,10 +62,11 @@ mpz_class trouverFacteur(mpz_class p, mpz_class B) {
     if (nouvelleCourbe) {
       E.a = 1;
       nbEssais = 0;
-      B += BIncr; // On change B qui est passé en argument, renvoyer et rappeler
-                  // depuis le tampon plus tard ?????
-      while (k == calck(B)) // Do while possible ?????
+
+      do
         B += BIncr;
+      while (k == calck(B)); // On change B qui est passé en argument, renvoyer
+                             // et rappeler avec le tampon
       k = calck(B);
     } else {
       E.a += aIncr;

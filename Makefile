@@ -16,8 +16,8 @@ CXX = g++
 
 # --- Options de compilation ---
 CXXFLAGS = -Wall -Wextra -Wpedantic -std=c++20
-CXXFLAGS += -fsanitize=address -g # Debug
-# CXXFLAGS += -O3 # Run
+# CXXFLAGS += -fsanitize=address -g # Debug
+CXXFLAGS += -O3 # Run
 # Optionnel : si tes headers GMP sont dans /usr/local/include
 # CXXFLAGS += -I/usr/local/include
 
