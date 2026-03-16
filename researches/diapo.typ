@@ -1,50 +1,25 @@
-#import "@preview/touying:0.6.2": *
-#import "my-theme.typ": *
+#import "@local/typst-packages:0.1.0": *
 
-#show: my-theme.with(
-  aspect-ratio: "4-3",
-  footer: self => self.info.institution,
-  config-info(
-    title: [Courbes elliptiques et factorisation],
-    subtitle: [Utilisation des courbes elliptiques sous forme de Weierstrass pour la factorisation d'entiers avec l'algorithme de Lenstra],
-    author: [Paul Chaudagne],
-    date: datetime.today(),
-    institution: [Institution],
-  ),
+#show: doc => template-slide(
+  doc,
+  title: "Cryptographie sur les courbes elliptiques"
 )
 
 #title-slide()
+= Les courbes elliptiques
 
-= First Section
+== Définitions
 
-== First Slide
+#defi("Espace projectif", [
+  Soit $KK$ un corps, on appelle *espace projectif de dimension n* l'ensemble des classes d'équivalence pour la relation $tilde$, noté :
 
-UwU
+  $ PP^n (KK) = (KK^(n+1) without {(0, ..., 0)}) slash tilde $
 
-= Second section
+  Pour $P = (x_1, ..., x_(n+1)) in KK without{(0, ..., 0)}$, on notera $[x_1 : ... : x_(n+1)]$ la *classe d'équivalence* de $P$ pour la relation $tilde$.
 
-Other 
+  On appellera en particulier *plan projectif* l'espace projectif de dimension 2.
+])
 
-= Third section
+== Formes de Weierstrass
 
-Toto
-
-= Fourth Section
-
-== First Slide
-
-UwU
-
-= Fifth section
-
-Other 
-
-= Sixth section
-
-== A try
-
-Toto
-
-== Test
-
-A slide with a title and an *important* information.
+== Structure de groupe abélien
