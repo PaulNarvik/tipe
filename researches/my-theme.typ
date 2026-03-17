@@ -9,7 +9,14 @@
     set align(top)
     show: components.cell.with(fill: self.colors.primary, inset: 1em)
 
-
+    context {
+      let sections = query(heading.where(level: 1))
+      grid(columns: auto)[
+        #for s in sections {
+          s.body
+        }  
+      ]
+    }
   }
 
   let footer(self) = {
