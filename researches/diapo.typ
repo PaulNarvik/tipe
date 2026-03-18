@@ -3,7 +3,8 @@
 #show: doc => template-slide(
   doc,
   title: "Cryptographie sur les courbes elliptiques",
-  subtitle: [Utilisation de la méthode de Lenstra]
+  subtitle: [Utilisation de la méthode de Lenstra],
+  author: [Paul Chaudagne]
 )
 
 #all_num.update(true)
@@ -32,6 +33,7 @@
 
 J'ai perdu
 
+
 == Structure de groupe abélien
 
 test 
@@ -44,10 +46,28 @@ Un essai
 
 = Implémentation et résultats
 
-== Contenu
+== Ich liebe les pommes
 
-Toto
+#lorem(80)
 
-== Une autre
+== Ich liebe le bleu canard
+
+#lorem(100)
+
+= Autre partie random
+
+== Bob 
+
+Bob voulait écrire à Alice
+
+== Alice 
+
+Alice ne voulait pas lire un message de Bob
+
+== Ève 
+
+Ève est en fait la gentille de l'histoire et intercepta le message
 
 #ending-slide("Thx for watching")
+
+Directed by me
