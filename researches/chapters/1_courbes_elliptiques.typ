@@ -4,35 +4,19 @@
 
 == Définition des courbes elliptiques
 
-#lemm("", [
-  La relation $tilde$, définie sur $KK^n without {(0, ..., 0)}$ par :
+#defi("Plan projectif", [
+  On définit la relation d'équivalence $tilde$ sur $KK^3 without {(0, 0, 0)}$ par
 
-  $
-    forall ((a_1, ..., a_n), (a'_1 ,... , a'_n)) in (KK^n without {(0, ..., 0)})^2,\
-    (a_1, ..., a_n) tilde (a'_1, ..., a'_n) equ (exists lambda in KK without {0}, (a_1, ..., a_n) = lambda (a'_1, ..., a'_n))
-  $
+  $ (a_1, a_2, a_3) tilde (a'_1, a'_2, a'_3) equ exists lambda in KK without {0}, (a_1, a_2, a_3) = lambda (a'_1, a'_2, a'_3) $
 
-  est une relation d'équivalence.
+  Soit $KK$ un corps, on appelle *plan projectif* l'ensemble des classes d'équivalence pour la relation $tilde$, noté :
+
+  $ PP^2 (KK) = (KK^(3) without {(0, 0, 0)}) slash tilde $
+
+  Pour $P = (x, y, z in KK without{(0, 0, 0)}$, on notera $[x : y : z]$ la *classe d'équivalence de $P$* pour la relation $tilde$.
 ])
 
-#preu[
-  Par définition d'un corps, on a :
-  - $1 in KK$ donc $tilde$ est réflexive
-  - Pour tout $lambda in KK without {0}$, $lambda^(-1) in KK$ donc $tilde$ est symétrique
-  - Pour tous $lambda, mu in KK without {0}$, $lambda mu in KK$ donc $tilde$ est transitive.
-]
-
-#defi("Espace projectif", [
-  Soit $KK$ un corps, on appelle *espace projectif de dimension n* l'ensemble des classes d'équivalence pour la relation $tilde$, noté :
-
-  $ PP^n (KK) = (KK^(n+1) without {(0, ..., 0)}) slash tilde $
-
-  Pour $P = (x_1, ..., x_(n+1)) in KK without{(0, ..., 0)}$, on notera $[x_1 : ... : x_(n+1)]$ la *classe d'équivalence* de $P$ pour la relation $tilde$.
-
-  On appellera en particulier *plan projectif* l'espace projectif de dimension 2.
-])
-
-Cela revient à projeter l'espace sur une demi-sphère centrée en (0, 0, 0), où chaque classe d'équivalence correspond à une droite passant par l'origine et un unique point de la demi-sphère, soit en dimension 1 :
+Cela revient à projeter l'espace sur une demi-sphère centrée en (0, 0), où chaque classe d'équivalence correspond à une droite passant par l'origine et un unique point de la demi-sphère, soit en dimension 1 :
 
 #figcan(caption: "Représentation de l'espace projectif de dimension 1.", {
   arrow_fig((-3, 0), (3, 0), style: 0.5pt + black)
@@ -50,19 +34,19 @@ Cela revient à projeter l'espace sur une demi-sphère centrée en (0, 0, 0), o�
 #defi("Polynôme homogène", [
   Un *polynôme homogène* est un polynôme en plusieurs indéterminées dont tous les monômes non nuls sont de même degré total.
 
-  Par exemple, un polynôme de degré 3 homogène en trois variables s'écrit sous la forme :
+  Nous ne travaillerons par la suite qu'avec des polynômes de degré 3 homogènes en trois indéterminées, de la forme :
 
-  $ P(X, Y, Z) = a X^3 + b Y^3 + c Z^3 + d X^2 Y + e X^2 Z + f Y^2 X + g Y^2 Z + h Z^2 X + i Z^2 Y + j X Y Z $
+  $ a X^3 + b Y^3 + c Z^3 + d X^2 Y + e X^2 Z + f Y^2 X + g Y^2 Z + h Z^2 X + i Z^2 Y + j X Y Z $
 ])
 
-On remarque en particulier que si $P$ est un polynôme homogène en trois variables de degré $d$, et que $P(x, y, z)=0$, alors :
+On remarque en particulier que si $P$ est un polynôme homogène et que $P(x, y, z)=0$, alors :
 
-$ forall (x', y', z') in [x : y : z], P(x', y', z') = lambda^d P(x, y, z) = 0 $
+$ forall (x', y', z') in [x : y : z], P(x', y', z') = lambda^3 P(x, y, z) = 0 $
 
 Dans le plan projectif, l'annulation d'un polynôme homogène ne dépend donc pas du représentant choisi.
 
 #defi("Courbe elliptique", [
-  On appelle *courbe elliptique sur un corps $KK$*, l'ensemble des solutions dans le plan projectif $PP^2(KK)$ de l'équation $F(X, Y, Z) = 0$, où $F$ est un polynôme homogène de degré 3 en trois variables à coefficients dans $KK$.
+  On appelle *courbe elliptique sur un corps $KK$*, l'ensemble des solutions dans le plan projectif $PP^2(KK)$ de l'équation $F(X, Y, Z) = 0$, où $F$ est un polynôme homogène de degré 3 en trois indéterminées à coefficients dans $KK$.
 
   Formellement, pour $F$ polynôme homogène de $KK_3[X, Y, Z]$, on note :
 
@@ -142,6 +126,8 @@ Par la suite, nous ne considérerons que des courbes elliptiques non singulière
   - L'intersection de la tangente $Z = 0$ en $cal(O)$ avec la courbe est donnée par l'équation $a X^3 + d X^2 Y = 0$, pour avoir ensuite $cal(O)$ point d'inflexion, il faut que ce point soit racine triple de $F(X : 1 : 0) = a X^3 + d X^2$, soit $d = 0$.
   - Supposons $a = 0$, on se place alors dans le plan $Z = 0$. Donc : $ (partial F) / (partial X) = 0 quad quad (partial F) / (partial Y) = 0 quad quad (partial F) / (partial Z) = e X^2 + j X Y + g Y^2 $
 
+  #todo[ À reprendre]
+
     En l'absence de conditions sur $X, Y$, ce polynôme s'annule dans la clôture algébrique $LL$ de $KK$, or $E(LL)$ reste une courbe elliptique, donc $E(LL)$ est singulière, d'où $a eq.not 0$.
 
   On choisit alors un représentant de $F$ ayant un coefficient $1$ devant $X^3$ (possible car $a eq.not 0$). Ainsi, $F(X, Y, Z) = X^3 + alpha Z^3 + beta X^2 Z + gamma Y^2 Z + delta Z^2 X + epsilon Z^2 Y + zeta X Y Z; gamma eq.not 0$.
@@ -207,7 +193,7 @@ Par la suite, nous ne considérerons que des courbes elliptiques non singulière
 
 === Prémices
 
-#prop("intersections avec une droite")[
+#prop("Intersections avec une droite")[
   Soient $E$ une courbe elliptique et $L$ une droite définies sur un corps $KK$.
 
   Si $E$ a au moins deux points d'intersection (comptés avec multiplicité) avec la droite $L$, alors $E$ a exactement trois points d'intersection (comptés avec leur multiplicité) avec la droite $L$

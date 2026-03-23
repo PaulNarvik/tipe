@@ -1,9 +1,17 @@
 #include "ellipticPoint.hpp"
+#include "ellipticCurve.hpp"
+#include <cstdlib>
+#include <gmpxx.h>
+#include <utility>
 
 // Constructeurs
-ellipticPoint::ellipticPoint() = default;
+ellipticPoint::ellipticPoint(const mpz_class &p) {
+  this->x = rand() % p;
+  this->y = rand() % p;
+  this->infty = false;
+};
 
-ellipticPoint::ellipticPoint(bool infty, const ellipticCurve &E) {
+ellipticPoint::ellipticPoint(bool infty, ellipticCurve &E) {
   this->x = 0;
   this->y = 0;
   this->infty = infty;
@@ -11,7 +19,7 @@ ellipticPoint::ellipticPoint(bool infty, const ellipticCurve &E) {
 }
 
 ellipticPoint::ellipticPoint(const mpz_class &x, const mpz_class &y,
-                             const ellipticCurve &E) {
+                             ellipticCurve &E) {
   this->x = x;
   this->y = y;
   this->infty = false;
@@ -113,6 +121,17 @@ ellipticPoint operator*(mpz_class k, const ellipticPoint &P) {
     k >>= 1;
   }
   return R;
+}
+
+// Utilitaire  TODO: Ne pas reseeder ici
+void ellipticPoint::randomPointAndCurve(gmp_randclass &rng) {
+  ellipticCurve *curve = this->curve;
+
+  this->x = rng.get_z_range(curve->p);
+  this->y = rng.get_z_range(curve->p);
+  curve->a = rng.get_z_range(curve->p);
+
+  curve->fixCoeffs(std::make_pair(this->x, this->y));
 }
 
 // Affichage

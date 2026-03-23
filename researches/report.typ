@@ -6,5 +6,8 @@
   subtitle: "TIPE",
 )
 
+#all_num.update(true)
+#box_thickness.update(2pt)
 
 #include "chapters/1_courbes_elliptiques.typ"
+

@@ -1,8 +1,8 @@
 #include "ellipticCurve.hpp"
 
-ellipticCurve::ellipticCurve(const mpz_class &a, const mpz_class &p,
+ellipticCurve::ellipticCurve(const mpz_class &p,
                              const std::pair<mpz_class, mpz_class> &P) {
-  this->a = a;
+  this->a = rand() % p;
   this->p = p;
   fixCoeffs(P);
 }
