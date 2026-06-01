@@ -1,6 +1,5 @@
 #include <cmath>
 #include <cstdint>
-#include <sys/types.h>
 
 uint64_t *primeArray(const uint64_t n, uint64_t *c) {
   if (n < 2) {
@@ -38,7 +37,6 @@ uint64_t *primeArray(const uint64_t n, uint64_t *c) {
     }
   }
 
-  // TODO: Séparer en deux à cet endroit ? Header vs extern ?
   uint64_t *premiers = new uint64_t[*c];
 
   premiers[0] = 2;

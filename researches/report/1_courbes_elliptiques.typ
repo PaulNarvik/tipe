@@ -1,24 +1,51 @@
 #import "@local/typst-packages:0.1.0": *
+#import "@preview/theorion:0.6.0": *
+
+#import cosmos.fancy: *
+#show: show-theorion
+#set-inherited-levels(0)
+
+#set-primary-border-color(green.darken(30%))
+#set-primary-body-color(green.lighten(80%))
+#set-primary-title-color(green.lighten(50%))
+
+#set-secondary-border-color(red.darken(30%))
+#set-secondary-body-color(red.lighten(80%))
+#set-secondary-title-color(red.lighten(50%))
+
+#set-tertiary-border-color(blue.darken(30%))
+#set-tertiary-body-color(blue.lighten(80%))
+#set-tertiary-title-color(blue.lighten(50%))
+
+#set-quaternary-border-color(purple.darken(30%))
+#set-quaternary-body-color(purple.lighten(80%))
+#set-quaternary-title-color(purple.lighten(50%))
+
+#set-fancy-radius(2pt)
+#set-title-radius(4pt)
+#set-breakable(true)
+#set-title-font-color(black)
 
 = Les courbes elliptiques
 
 == Définition des courbes elliptiques
 
-#defi("Plan projectif", [
-  On définit la relation d'équivalence $tilde$ sur $KK^3 without {(0, 0, 0)}$ par
+#definition[Plan projectif][
+  Soit $KK$ un corps. On définit la relation d'équivalence $tilde$ sur $KK^3 without {(0, 0, 0)}$ par $(a_1, a_2, a_3) tilde (a'_1, a'_2, a'_3)$ si et seulement si il  existe $lambda in KK without {0}$ tel que : 
 
-  $ (a_1, a_2, a_3) tilde (a'_1, a'_2, a'_3) equ exists lambda in KK without {0}, (a_1, a_2, a_3) = lambda (a'_1, a'_2, a'_3) $
+  $ (a_1, a_2, a_3) = lambda (a'_1, a'_2, a'_3) $
 
-  Soit $KK$ un corps, on appelle *plan projectif* l'ensemble des classes d'équivalence pour la relation $tilde$, noté :
+  On appelle *plan projectif* l'ensemble des classes d'équivalence pour $tilde$, noté :
 
   $ PP^2 (KK) = (KK^(3) without {(0, 0, 0)}) slash tilde $
 
-  Pour $P = (x, y, z in KK without{(0, 0, 0)}$, on notera $[x : y : z]$ la *classe d'équivalence de $P$* pour la relation $tilde$.
-])
+  Pour $P = (x, y, z in KK without{(0, 0, 0)}$, on notera #box($[x : y : z]$) la *classe d'équivalence de $P$* pour $tilde$.
+]
 
 Cela revient à projeter l'espace sur une demi-sphère centrée en (0, 0), où chaque classe d'équivalence correspond à une droite passant par l'origine et un unique point de la demi-sphère, soit en dimension 1 :
 
-#figcan(caption: "Représentation de l'espace projectif de dimension 1.", {
+#figcan(caption: "Espace projectif de dimension 1.", {
+  import draw: *
   arrow_fig((-3, 0), (3, 0), style: 0.5pt + black)
   arrow_fig((0, -1), (0, 2.5), style: 0.5pt + black)
   arc((2, 0), start: 0deg, stop: 180deg, radius: 2, stroke: 1pt + blue)
@@ -27,17 +54,17 @@ Cela revient à projeter l'espace sur une demi-sphère centrée en (0, 0), où c
   circle((0, 0), radius: 0.1, stroke: 1pt + red)
   circle((1.90, 0.63), radius: 0.05, fill: black)
   content((2.2, 0.4), "P")
-  content((4, 1.4), "Classe d'équivalence de P")
-  content((-4, 1), "Représentants principaux")
+  content((2.1, 1.4), "Classe d'équivalence de P")
+  content((-3, 1.9), "Représentants principaux")
 })
 
-#defi("Polynôme homogène", [
+#definition[Polynôme homogène][
   Un *polynôme homogène* est un polynôme en plusieurs indéterminées dont tous les monômes non nuls sont de même degré total.
 
   Nous ne travaillerons par la suite qu'avec des polynômes de degré 3 homogènes en trois indéterminées, de la forme :
 
-  $ a X^3 + b Y^3 + c Z^3 + d X^2 Y + e X^2 Z + f Y^2 X + g Y^2 Z + h Z^2 X + i Z^2 Y + j X Y Z $
-])
+  $ a X^3 + b Y^3 + c Z^3 + d X^2 Y + e X^2 Z +f Y^2 X \ + g Y^2 Z + h Z^2 X + i Z^2 Y + j X Y Z $
+]
 
 On remarque en particulier que si $P$ est un polynôme homogène et que $P(x, y, z)=0$, alors :
 
@@ -45,7 +72,7 @@ $ forall (x', y', z') in [x : y : z], P(x', y', z') = lambda^3 P(x, y, z) = 0 $
 
 Dans le plan projectif, l'annulation d'un polynôme homogène ne dépend donc pas du représentant choisi.
 
-#defi("Courbe elliptique", [
+#definition[Courbe elliptique][
   On appelle *courbe elliptique sur un corps $KK$*, l'ensemble des solutions dans le plan projectif $PP^2(KK)$ de l'équation $F(X, Y, Z) = 0$, où $F$ est un polynôme homogène de degré 3 en trois indéterminées à coefficients dans $KK$.
 
   Formellement, pour $F$ polynôme homogène de $KK_3[X, Y, Z]$, on note :
@@ -53,11 +80,11 @@ Dans le plan projectif, l'annulation d'un polynôme homogène ne dépend donc pa
   $ E(KK) = {[x : y : z] in PP^2(KK) , F(x, y, z) = 0} $
 
   En l'absence d'ambiguïté sur le corps, on notera indistinctement $E(KK$) et $E$ les courbes elliptiques considérées.
-])
+]
 
 On notera que multiplier le polynôme par un scalaire non nul ne change pas la courbe elliptique considérée.
 
-#defi("Singularité", [
+#definition[Singularité][
   Un point $P = [x : y : z]$ d'une courbe elliptique est dit *singulier* lorsque :
 
   $ ((partial F) / (partial X)(P), (partial F) / (partial Y)(P), (partial F) / (partial Z)(P)) = (0, 0, 0) $
@@ -71,27 +98,27 @@ On notera que multiplier le polynôme par un scalaire non nul ne change pas la c
 
 Par la suite, nous ne considérerons que des courbes elliptiques non singulières définies sur un corps $KK$ de caractéristique différente de 2 ou 3.
 
-#defi("Tangente", [
+#definition[Tangente][
   Soit $E$ une courbe elliptique, et $P in E$ un point non singulier. Alors la *tangente à $E$ en $P$* est donnée par :
 
   $
-    (partial F) / (partial X) (P) (X - X_P) + (partial F) / (partial Y) (P) (Y - Y_P) + (partial F) / (partial Z) (P) (Z - Z_P) = 0
+    (partial F) / (partial X) (P) (X - X_P) + (partial F) / (partial Y) (P) (Y - Y_P) +  \ (partial F) / (partial Z) (P) (Z - Z_P) = 0
   $
-])
+]
 
-#defi("Point d'inflexion", [
+#definition[Point d'inflexion][
   Soit $E$ une courbe elliptique, on dit qu'un point $P in E$ est un *point d'inflexion* si la tangente à $E$ en $P$ intersecte $E$ en $P$ avec une multiplicité égale à 3.
-])
+]
 
 == Forme de Weierstrass
 
-#prop("")[
+#proposition[][
   Soit $E$ une courbe elliptique non singulière sur $KK$. Soit $P$ un point d'inflexion de $E$.
 
   Alors un changement de variables linéaire inversible permet de transformer $P$ en $[0 : 1: 0]$ et la tangente en $P$ en $Z = 0$.
 ]
 
-#preu()[
+#proof[
   Soit $L$ la tangente à $E$ en $P = [x_P : y_P : z_P]$.
   Soit $Q = [x_Q : y_Q : z_Q] in L without E$, les vecteurs $(x_P, y_P, z_P)$ et $x_Q, y_Q, z_Q)$ sont linéairement indépendants car $P$ et $Q$ correspondent à deux points distincts du plan projectif.
 
@@ -107,22 +134,22 @@ Par la suite, nous ne considérerons que des courbes elliptiques non singulière
   $M$ est inversible. $M^(-1)$ envoie $P$ sur le point $[0 : 1 : 0]$ et $Q$ sur le point $[1 : 0 : 0]$. Donc $M^(-1)$ envoie $L$ sur $Z = 0$ car c'est l'unique droite passant par $P$ et $Q$.
 ]
 
-#theo("Mise sous forme de Weierstrass")[
+#theorem[Mise sous forme de Weierstrass][
   Soit $E$ une courbe elliptique non singulière. Soit $cal(O)$ un point d'inflexion de $E$, si $cal(O) = [0 : 1 : 0]$ et si la tangente à $E$ en $cal(O)$ est $Z = 0$, alors $E$ est de la forme:
 
-  $ Y^2 Z + a_1 Y X Z + a_3 Y Z^2 - (X^3 + a_2 X^2 Z + a_4 X Z^2 + a_6 Z^3) = 0 $
+  $ Y^2 Z + a_1 Y X Z + a_3 Y Z^2\  - (X^3 + a_2 X^2 Z + a_4 X Z^2 + a_6 Z^3) = 0 $
 ]
 
-#preu[
+#proof[
   La forme générale du polynôme qui définit une courbe elliptique est :
 
-  $ F(X, Y, Z) = a X^3 + b Y^3 + c Z^3 + d X^2 Y + e X^2 Z + f Y^2 X + g Y^2 Z + h Z^2 X + i Z^2 Y + j X Y Z $
+  $ F(X, Y, Z) = a X^3 + b Y^3 + c Z^3 + d X^2 Y + e X^2 Z \ + f Y^2 X + g Y^2 Z + h Z^2 X + i Z^2 Y + j X Y Z $
 
   Montrons que certains termes s'annulent :
 
   - F([0 : 1 : 0]) = 0 donc $b = 0$.
 
-  - La tangente à $E$ en $[0 : 1 : 0]$ est $Z = 0$, donc $(partial F) / (partial X) ([0 : 1 : 0]) = f = 0$ et $(partial F) / (partial Z) ([0 : 1 : 0]) = g eq.not 0$
+  - La tangente à $E$ en $[0 : 1 : 0]$ est $Z = 0$, donc #box($(partial F) / (partial X) ([0 : 1 : 0]) = f = 0$) et $(partial F) / (partial Z) ([0 : 1 : 0]) = g eq.not 0$
   - L'intersection de la tangente $Z = 0$ en $cal(O)$ avec la courbe est donnée par l'équation $a X^3 + d X^2 Y = 0$, pour avoir ensuite $cal(O)$ point d'inflexion, il faut que ce point soit racine triple de $F(X : 1 : 0) = a X^3 + d X^2$, soit $d = 0$.
   - Supposons $a = 0$, on se place alors dans le plan $Z = 0$. Donc : $ (partial F) / (partial X) = 0 quad quad (partial F) / (partial Y) = 0 quad quad (partial F) / (partial Z) = e X^2 + j X Y + g Y^2 $
 
@@ -137,13 +164,13 @@ Par la suite, nous ne considérerons que des courbes elliptiques non singulière
 
 == Forme de Weierstrass réduite
 
-#theo("Mise sous forme réduite de Weierstrass")[
+#theorem[Mise sous forme réduite de Weierstrass][
   Si $"Car"(K) eq.not 2, 3$, on peut mettre une courbe elliptique sous forme de Weierstrass réduite :
 
   $ Y^2Z = X^3 + a X Z^2 + b Z^3 $ <eq:WeierProj>
 ]
 
-#preu[
+#proof[
   Soit $E$ une courbe elliptique sous forme de Weierstrass, on pose d'abord, pour annuler le terme en $X Y Z$ :
 
   $ X' = X, Y' = Y + a_1 /2 X, Z' = Z $
@@ -158,7 +185,7 @@ Par la suite, nous ne considérerons que des courbes elliptiques non singulière
 #todo[Le refaire à la main au moins une fois]
 
 
-#coro("Forme réduite affine")[
+#corollary[Forme réduite affine][
   #v(5pt)
   En coordonnées non homogènes ($x = X /Z$ et $y = Y / Z$), on peut écrire cette équation :
 
@@ -167,11 +194,11 @@ Par la suite, nous ne considérerons que des courbes elliptiques non singulière
   Ainsi que le point $cal(O) = [0 : 1 : 0]$ qui est le seul point à l'infini.
 ]
 
-#prop("Critère de singularité")[
+#proposition[Critère de singularité][
   Soit $E$ une équation sous forme de Weierstrass, alors $E$ est singulière si et seulement si la quantité $Delta := 4 a^3 + 27 b^2$ est nulle.
 ]
 
-#preu[
+#proof[
   $E$ est une courbe de $PP^2 (KK)$ donnée par l'équation :
 
   $ F(X, Y, Z) = Y^2 Z - X^3 - a X Z^2 - b Z^3 $
@@ -193,13 +220,13 @@ Par la suite, nous ne considérerons que des courbes elliptiques non singulière
 
 === Prémices
 
-#prop("Intersections avec une droite")[
+#proposition[Intersections avec une droite][
   Soient $E$ une courbe elliptique et $L$ une droite définies sur un corps $KK$.
 
   Si $E$ a au moins deux points d'intersection (comptés avec multiplicité) avec la droite $L$, alors $E$ a exactement trois points d'intersection (comptés avec leur multiplicité) avec la droite $L$
 ]
 
-#preu[
+#proof[
   On prend $E$ sous forme réduite de Weierstrass, $E : F(X, Y, Z) = Y^2 Z - X^3 -a X Z^2 - b Z^3 = 0$. $L$ satisfait l'équation $alpha X + beta Y + gamma Z = 0$. Sans perte de généralité, on peut supposer que $alpha eq.not 0$ et que l'équation est alors $X = - beta' Y - gamma' Z$. Le polynôme $P(Y, Z) = F(-beta' Y - gamma' Z, Y, Z)$ est un polynôme admettant
 ]
 

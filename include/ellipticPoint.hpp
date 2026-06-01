@@ -10,7 +10,7 @@ struct facteurTrouve : std::exception {
   const char *what() { return "Facteur trouvé par Lenstra"; }
 };
 
-struct ellipticPoint { // Encapsuler plus tard ????? (private etc etc)
+struct ellipticPoint {
   // Membres
   mpz_class x;
   mpz_class y;
@@ -22,7 +22,7 @@ struct ellipticPoint { // Encapsuler plus tard ????? (private etc etc)
   ellipticPoint(bool infty, ellipticCurve &E);
   ellipticPoint(const mpz_class &x, const mpz_class &y, ellipticCurve &E);
 
-  // Assignations :  Ajouter += etc ?
+  // Assignations :
   ellipticPoint(const ellipticPoint &);
   ellipticPoint &operator=(const ellipticPoint &);
 

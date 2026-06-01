@@ -18,13 +18,9 @@ CXX = g++
 CXXFLAGS = -Wall -Wextra -Wpedantic -std=c++20
 # CXXFLAGS += -fsanitize=address -g # Debug
 CXXFLAGS += -O3 # Run
-# Optionnel : si tes headers GMP sont dans /usr/local/include
-# CXXFLAGS += -I/usr/local/include
 
 # --- Bibliothèques à lier ---
 LDFLAGS = -lgmp -lgmpxx
-# Optionnel : si la lib est dans un dossier non standard
-# LDFLAGS += -L/usr/local/lib
 
 # --- Règle principale ---
 compile: $(BUILDDIR) $(BINDIR) $(EXEC)

@@ -14,7 +14,8 @@ void ellipticCurve::fixCoeffs(const std::pair<mpz_class, mpz_class> &P) {
 }
 
 mpz_class ellipticCurve::getDiscriminant() {
-  return 4 * (this->a * this->a * this->a) + 27 * (this->b * this->b);
+  return (4 * (this->a * this->a * this->a) + 27 * (this->b * this->b)) %
+         this->p;
 }
 
 std::ostream &operator<<(std::ostream &os, ellipticCurve &E) {

@@ -1,8 +1,5 @@
 #include "ellipticPoint.hpp"
 #include "ellipticCurve.hpp"
-#include <cstdlib>
-#include <gmpxx.h>
-#include <utility>
 
 // Constructeurs
 ellipticPoint::ellipticPoint(const mpz_class &p) {
@@ -123,7 +120,7 @@ ellipticPoint operator*(mpz_class k, const ellipticPoint &P) {
   return R;
 }
 
-// Utilitaire  TODO: Ne pas reseeder ici
+// Utilitaire
 void ellipticPoint::randomPointAndCurve(gmp_randclass &rng) {
   ellipticCurve *curve = this->curve;
 
