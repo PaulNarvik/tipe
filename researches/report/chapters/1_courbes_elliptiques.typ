@@ -200,7 +200,7 @@ On peut donc se contenter d'étudier ce cas particulier dans la suite, et en dé
 On remarque que si $P$ et $Q$ sont deux points de $E$ ont même abscisse, alors $Q = plus.minus P$.
 
 #proposition[Critère de singularité][
-  Soit $E$ une équation sous forme de Weierstrass, alors $E$ est singulière si et seulement si la quantité \ $Delta := 4 a^3 + 27 b^2$ est nulle.
+  Soit $E$ une équation sous forme de Weierstrass, alors $E$ est singulière si et seulement si la quantité $Delta := 4 a^3 + 27 b^2$ est nulle.
 ]
 
 #proof[
@@ -235,12 +235,14 @@ On remarque que si $P$ et $Q$ sont deux points de $E$ ont même abscisse, alors 
 
 #definition[Opposé][Si $P = (x, y) in E$, alors on définit *l'opposé de $P$* par $-P := (x, -y)$.]
 
-#definition[Loi de groupe][
+#definition[Loi de la sécante-tangente][
   On définit la loi $*$ dite de la *sécante-tangente* par :
   - Si $P$, $Q in E$ avec $P eq.not Q$, alors $P * Q$ est le troisième point d'intersection de la droite passant par $P$ et $Q$ avec $E$. 
   - Si $P in E$, alors $P * P$ est le troisième point d'intersection de la tangente à $E$ en $P.$
+]
 
-  On définit de plus $P + Q := cal(O) * (P * Q) = R$ où $-R$ est le troisième point d'intersection avec la droite.
+#definition[Loi de groupe][
+  On définit de plus la *loi additive* $P + Q := cal(O) * (P * Q) = R$ où $-R$ est le troisième point d'intersection avec la droite.
 ]
 
 #let fn = (
@@ -309,20 +311,36 @@ On remarque que si $P$ et $Q$ sont deux points de $E$ ont même abscisse, alors 
   )$.
 ]
 
+#proof[
+  Si $P eq.not Q$ et $P eq.not -Q$, la sécante passant par $P$ et $Q$ a pour pente $lambda = (y_2 - y_1) / (x/2 - x_1)$, et est donc d'équation $y = lambda x + delta$ où $delta = y_1 - lambda x_1$ est l'ordonné à l'origine.
+
+  $ f(x, lambda x + delta) = -x ^3 + lambda^2 x^2 + (2 lambda delta - a) x + (delta^2 - b)$
+
+  Donc par la formule de Viète, $lambda^2 = x_1 + x_2 + x_3$, et $x_3 = lambda^2 - x_1 - x_2$.
+
+  Dans le cas $P = Q$, on a la même preuve en prenant $lambda = (3 x_1^2 + a) / (2 y_1)$ la pente de la tangente à $E$ en $P$.
+]
+
+C'est justement la nécessité d'un inverse qui permettra plus tard de trouver un facteur premier.
+
 #proposition[
   La loi $+$ est associative et commutative.
+]
+
+#proof[
+  On montrer la commutativité géométriquement, et l'injectivité par le calcul en injectant les différentes expressions des coordonnées.
 ]
 
 #theorem[
   $(E, +)$ a une structure de groupe abélien, avec $cal(O)$ le neutre du groupe.
 ]
 
-== Théorème de Hasse
-
-#theorem[Théorème de Hasse][
-  Si $p$ est un nombre premier et $E(FF_p)$ une courbe elliptique, alors le cardinal N de $E(FF_p)$ vérifie 
-
-  $ abs(N - (p + 1)) <= 2 sqrt(p) $
-] <hasse>
-
-On notera que Deuring a prouvé qu'il existait pour chaque valeur de cet intervalle une paire $(a, b)$ où ce cardinal.
+// == Théorème de Hasse
+//
+// #theorem[Théorème de Hasse][
+//   Si $p$ est un nombre premier et $E(FF_p)$ une courbe elliptique, alors le cardinal N de $E(FF_p)$ vérifie 
+//
+//   $ abs(N - (p + 1)) <= 2 sqrt(p) $
+// ] <hasse>
+//
+// On notera que Deuring a prouvé qu'il existait pour chaque valeur de cet intervalle une paire $(a, b)$ où ce cardinal.

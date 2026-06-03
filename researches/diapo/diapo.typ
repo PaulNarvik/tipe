@@ -56,10 +56,24 @@
 
 = Conclusion
 
----
+== Conclusion
 
 - Calculs bien plus rapides qu'avec l'algorithme naïf, et parallélisation plus facile.
 
 - Ne convient pas aux grands facteurs (par exemple RSA), puisque la borne $B$ explose ainsi que la mémoire nécessaire.
+
+- Reste un progrès par rapport à l'algorithme naïf et l'un des meilleurs pour des facteurs jusqu'à une cinquantaine de chiffres.
+
+== Bibliographie
+
+1. SAMUEL S. WAGSTAFF, JR. : The Joy of Factoring : #underline[https://www.ams.org/publications/authors/books/postpub/stml-68], ISBN: 978-1-4704-1048-3
+
+2. ALICE BOUILLET, DORIAN BERGER : Arithmétique des courbes elliptiques : #underline[https://perso.eleves.ens-rennes.fr/~aboui725/Stages/TER_M1.pdf]
+
+3.  LAWRENCE C. WASHINGTON : Elliptic Curves Number Theory and Cryptography, Second Edition : CRC Press, Taylor & Francis Group, 2008, ISBN: 978-1-4200-7146-7
+
+4. DIEGO IZQUIERDO : MAT562 : Introduction à la géométrie algébrique et courbes elliptiques : #underline[https://synapses.polytechnique.fr/catalogue/2023-2024/ue/795/MAT562-introduction-a-la-geometrie-algebrique-et-courbes-elliptiques?from=D1]
+
+5. JOSEPH H. SILVERMAN : The Arithmetic of Elliptic Curves : #underline[https://link.springer.com/book/10.1007/978-0-387-09494-6], ISBN: 978-0-387-09493-9
 
 #include "chapters/4_annexes.typ"

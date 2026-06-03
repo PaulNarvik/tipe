@@ -36,6 +36,20 @@
   ```
 ]
 
+--- 
+
+- J'ai utilisé *l'algorithme d'Euclide étendu* afin d'inverser les entiers dans $FF_p$.
+
+- J'utilise une *file* pour traiter chacun des facteurs trouvés.
+
+- La primalité est vérifiée grâce à l'algorithme de *Miller-Rabin*.
+
+- Le crible d'Ératosthène nécessite un espace proportionnel à l'entier $B$
+
+---
+
+== Résultats
+
 #figure(caption : "Comparaison des algorithmes naïfs et de Lenstra pour des nombres tirés aléatoirement")[#image("../graphique_temps_moyens_fond_blanc.png")]
 
 #remark[
@@ -50,24 +64,24 @@ D'autres tests ont été réalisé avec l'algorithme de Lenstra uniquement, en v
 n = 7099074735650163361090334063849287869508897030027526772787
 
 22:03:08 - Essai pour B = 11000
-22:03:08 - Facteur: 219467308483
+22:03:08 - Facteur: 219467308483   // Immédiat
 
-22:03:08 - Essai pour B = 50000
+22:03:08 - Essai pour B = 50000    // Rien 
 
-22:03:11 - Essai pour B = 250000
+22:03:11 - Essai pour B = 250000   // Rien
 
-22:03:28 - Essai pour B = 1000000
+22:03:28 - Essai pour B = 1000000  // Rien
 
-22:06:19 - Essai pour B = 3000000
+22:06:19 - Essai pour B = 3000000  // Rien
 ``` <test1>
 
 ---
 
 #codly(offset-from: <test1>)
 ```
-22:31:23 - Essai pour B = 11000000
-22:32:16 - Facteur: 878948692609348221551
-22:32:16 - Facteur: 36801742833925363771266239
+22:31:23 - Essai pour B = 11000000            
+22:32:16 - Facteur: 878948692609348221551       // Très rapide 
+22:32:16 - Facteur: 36801742833925363771266239  // Immédiat
 
 ==========================================
 Temps d'exécution : 29:07.85 s
@@ -75,5 +89,7 @@ Mémoire : 18180 kb
 ```
 
 #remark[
-  Le temps de calcul est plus élevé à cause de la taille des facteurs, pas de celle du produit directement.
+  Le temps de calcul est plus élevé à cause de la taille des facteurs, pas de celle du produit directement : 
+
+  - La factorisation de $300!$ ne prend que $0.56 s$.
 ]

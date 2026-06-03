@@ -73,11 +73,34 @@
 #set-breakable(true)
 #set-title-font-color(black)
 
+#outline(depth: 2)
+
 #include "chapters/1_courbes_elliptiques.typ"
 #include "chapters/2_methode_factorisation.typ"
 #include "chapters/3_implementation.typ"
 
+#colbreak()
+
+= Conclusion
+
+L'algorithme de Lenstra est utilisable en pratique pour factoriser des entiers ayant des facteurs ne dépassant pas une cinquantaine de chiffres mais devient inutilisable ensuite avec l'explosion de la borne de lissité et donc de l'espace mémoire disponible pour calculer les nombres premiers nécessaires.
+
+Il s'agit de plus d'un algorithme facilement parallélisable en lançant de manière concurrente différents threads sur des courbes elliptiques différentes.
+
 #set page(columns: 1)
+
+= Bibliographie
+
+1. SAMUEL S. WAGSTAFF, JR. : The Joy of Factoring : #underline[https://www.ams.org/publications/authors/books/postpub/stml-68], ISBN: 978-1-4704-1048-3
+
+2. ALICE BOUILLET, DORIAN BERGER : Arithmétique des courbes elliptiques : #underline[https://perso.eleves.ens-rennes.fr/~aboui725/Stages/TER_M1.pdf]
+
+3.  LAWRENCE C. WASHINGTON : Elliptic Curves Number Theory and Cryptography, Second Edition : CRC Press, Taylor & Francis Group, 2008, ISBN: 978-1-4200-7146-7
+
+4. DIEGO IZQUIERDO : MAT562 : Introduction à la géométrie algébrique et courbes elliptiques : #underline[https://synapses.polytechnique.fr/catalogue/2023-2024/ue/795/MAT562-introduction-a-la-geometrie-algebrique-et-courbes-elliptiques?from=D1]
+
+5. JOSEPH H. SILVERMAN : The Arithmetic of Elliptic Curves : #underline[https://link.springer.com/book/10.1007/978-0-387-09494-6], ISBN: 978-0-387-09493-9
+
 = Annexes
 
 #include "annexes/1_code.typ"

@@ -53,4 +53,24 @@ Il peut être compliqué de trouver un point de manière aléatoire sur une cour
   De plus, le nombre total d'additions de points à effectuer pour trouver $p$ est $L(p)^sqrt(2)$, que l'on peut majorer pour tout facteur premier par $L(n)$.
 ]
 
+#proof[
+  L'équivalent asymptotique de la répartition des nombres premiers nous dit qu'il y a environ $B / (ln B)$ premiers inférieurs à $B$. La plupart vérifie $p^2 > B$ donc l'exposant nécessaire dans Lenstra est en général $1$.
+
+  La multiplication rapide nécessite environ $log B$ additions. Donc un total de $B$ calculs par courbe.
+
+  Par l'estimation précédente il faut donc essayer en moyenne $u^u$ courbes.
+
+  On veut alors minimiser $f(B) = B u^u$.
+
+  On prend $a$ tel que $B = L(p)^a$ et on exprime nos termes en fonction de ce paramètre :
+
+  $ u ln u approx 1 / a sqrt((ln p) / (ln ln p)) 1/2 ln ln p = 1/(2a) ln L(p) $
+
+  Donc $f(B) approx L(p)^(a + 1 / (2a))$ où $L(p)$ est une constante positive pour $p >= e^e$. Cette fonction est minimale pour $a = sqrt(2) / 2$.
+
+  Donc $B = L(p)^(sqrt(2) / 2)$ et le nombre estimé d'opérations est $f(B) = L(p)^sqrt(2)$.
+
+  Comme $p <= sqrt(n)$ pour tout facteur premier $p$ de $n$, on peut majorer par $L(N)$.
+]
+
 Dans la pratique, les valeurs de $B$ sont tabulées.

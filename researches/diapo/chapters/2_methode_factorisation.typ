@@ -32,7 +32,7 @@
 --- 
 
 #algorithm[Algorithme de Lenstra][
-  *Entrée* : un entier $n$ et une borne de lissité $B$.
+  *Entrée* : un entier $n$ et une borne de lissité $B$. \
   *Sortie* : un facteur premier $p$ de $n$.
 
   - On élimine naïvement tous les facteurs $2$ et $3$ de $n$ pour s'assurer que $FF_p$ sera de caractéristique différente de $2$ ou $3$, et que $E_(a, b)(FF_p)$ sera donc bien définie.
@@ -72,7 +72,7 @@
 ---
 
 #assumption[
-  On suppose qu'une courbe elliptique modulo $p$ aléatoire de la forme $E_(a, b)$ où $4 a^3 + 27 b^2 equiv.not 0" "[p]$ a un cardinal $B$-lisse avec probabilité $u^(-u)$ où $u := (ln p) / (ln B)$.
+  On suppose qu'une courbe elliptique modulo $p$ aléatoire et lisse de la forme $E_(a, b)$ a un cardinal $B$-lisse avec probabilité $u^(-u)$ où $u := (ln p) / (ln B)$.
 
 ]
 

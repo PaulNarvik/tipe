@@ -25,7 +25,9 @@ int main(void) {
     upperBound *= 10;
   mpz_class p;
   mpz_set_str(p.get_mpz_t(),
-              "7099074735650163361090334063849287869508897030027526772787", 10);
+              "9380918934846757224937069342646766481475473439083664837734692084"
+              "1408890300907",
+              10);
 
   // Entier à factoriser
   // mpz_class p = rng.get_z_range(upperBound);
