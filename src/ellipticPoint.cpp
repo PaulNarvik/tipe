@@ -23,7 +23,7 @@ ellipticPoint::ellipticPoint(const mpz_class &x, const mpz_class &y,
   this->curve = &E;
 }
 
-// Assignations :  Ajouter += etc ????? => Remplacer + ?????
+// Assignations
 ellipticPoint::ellipticPoint(const ellipticPoint &) = default;
 ellipticPoint &ellipticPoint::operator=(const ellipticPoint &) = default;
 
@@ -48,40 +48,30 @@ ellipticPoint operator+(const ellipticPoint &P1, const ellipticPoint &P2) {
 
   if ((P1.x == P2.x) && ((P1.y + P2.y) % P1.curve->p == 0)) // Points opposés
     return ellipticPoint(true, *P1.curve);
-  else { // Supprimer duplicatas de code ici !!!!!
+  else {
     mpz_class s;
     bool result;
     mpz_class pgcd = 1;
+    mpz_class num, denom;
+
     if (P1 == P2) { // Un seul point
-      mpz_class num =
-          3 * P1.x * P1.x + P1.curve->a; // Modulo sur ces deux lignes ?????
-      mpz_class denom = 2 * P1.y;
-
-      mpz_class inv;
-      result = mpz_invert(
-          inv.get_mpz_t(), denom.get_mpz_t(),
-          P1.curve->p.get_mpz_t()); // si result = 0, pas inversible !!!!!
-      if (!result)
-        mpz_gcd(pgcd.get_mpz_t(), denom.get_mpz_t(), P1.curve->p.get_mpz_t());
-      else
-        s = (num * inv) % P1.curve->p;
+      num = 3 * P1.x * P1.x + P1.curve->a;
+      denom = 2 * P1.y;
     } else { // Deux points n'ayant pas même abscisse
-      mpz_class num = P2.y - P1.y;
-      mpz_class denom = P2.x - P1.x;
-
-      mpz_class inv;
-      result = mpz_invert(inv.get_mpz_t(), denom.get_mpz_t(),
-                          P1.curve->p.get_mpz_t()); // Même remarque !!!!!
-      if (!result)
-        mpz_gcd(pgcd.get_mpz_t(), denom.get_mpz_t(), P1.curve->p.get_mpz_t());
-      else
-        s = (num * inv) % P1.curve->p;
+      num = P2.y - P1.y;
+      denom = P2.x - P1.x;
     }
+
+    mpz_class inv;
+    result = mpz_invert(inv.get_mpz_t(), denom.get_mpz_t(),
+                        P1.curve->p.get_mpz_t()); // Même remarque
+    if (!result)
+      mpz_gcd(pgcd.get_mpz_t(), denom.get_mpz_t(), P1.curve->p.get_mpz_t());
+    else
+      s = (num * inv) % P1.curve->p;
 
     if (1 < pgcd && P1.curve->p > pgcd) {
       throw facteurTrouve(pgcd);
-    } else {
-      // Changer de courbe !!!!!
     }
 
     mpz_class x = (s * s - P1.x - P2.x) % P1.curve->p;

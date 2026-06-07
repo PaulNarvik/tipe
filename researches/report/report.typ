@@ -9,6 +9,12 @@
   languages: codly-languages
 )
 
+#[
+  #set page(margin: 0em)
+  #image("Page de Garde.pdf")
+  #pagebreak()
+]
+
 #show: doc => template(
   doc,
   author: "Paul Chaudagne (n° 32452)",
@@ -73,13 +79,10 @@
 #set-breakable(true)
 #set-title-font-color(black)
 
-#outline(depth: 2)
-
 #include "chapters/1_courbes_elliptiques.typ"
 #include "chapters/2_methode_factorisation.typ"
 #include "chapters/3_implementation.typ"
 
-#colbreak()
 
 = Conclusion
 
@@ -103,4 +106,5 @@ Il s'agit de plus d'un algorithme facilement parallélisable en lançant de mani
 
 = Annexes
 
-#include "annexes/1_code.typ"
+#include "annexes/1_others.typ"
+#include "annexes/2_code.typ"

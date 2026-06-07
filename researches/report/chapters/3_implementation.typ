@@ -32,6 +32,15 @@ struct ellipticPoint {
 }
 ```
 
+J'ai implémenté l'addition de points avec la même disjonction de cas que présentée, et la multiplication rapide de la même manière que l'exponentiation rapide sur les flottants. 
+
+J'ai utilisé le *crible d'Ératosthène* afin d'obtenir les premiers plus petits que $B$, cet algorithme nécessite un espace proportionnel à $B$ ce qui le rend obsolète dès que notre facteur dépasse la cinquantaine de chiffres.
+
+Le test de primalité est réalisé avec l'algorithme de *Miller-Rabin*, et les inversions modulaires par *l'algorithme d'Euclide étendu*.
+
+
+== Résultats
+
 #figure(caption : "Comparaison des algorithmes naïfs et de Lenstra pour des nombres tirés aléatoirement")[#image("../graphique_temps_moyens_fond_blanc.png")]
 
 #remark[

@@ -17,8 +17,6 @@
 
 == Algorithme de factorisation de Lenstra
 
-Il s'agit d'une variante de l'algorithme $p - 1$ de Pollard exploitant les propriétés du corps fini $FF_p$.
-
 #algorithm[Algorithme de Lenstra][
   Soient $n$ un entier, et $B$ une borne de lissité. On applique l'algorithme suivant pour trouver un facteur premier $p$ de $n$ à partir de courbes elliptiques $E_(a, b)$ de la forme :
 
@@ -41,6 +39,10 @@ Il s'agit d'une variante de l'algorithme $p - 1$ de Pollard exploitant les propr
   - Si aucune exception n'est levée lors de ces calculs, on change de courbe et de point ou on abandonne la factorisation.
 ]
 
+Il s'agit d'une variante de l'algorithme $p - 1$ de Pollard exploitant les propriétés du corps fini $FF_p$.
+
+Là où $p - 1$ calcule des puissances, Lenstra calcule des produits, et on remplace les calculs explicites de PGCD par des calculs de pentes lors de l'addition de points.
+
 Il peut être compliqué de trouver un point de manière aléatoire sur une courbe déjà choisie, on tire donc aléatoirement les coordonnées de $P$ et on calcule ensuite $b$ pour que $P$ soit un point de $E_(a, b)$.
 
 #theorem[Choix optimal de B][
@@ -51,7 +53,7 @@ Il peut être compliqué de trouver un point de manière aléatoire sur une cour
   Si $L(x) := exp(sqrt(ln x dot ln ln x))$, alors $B = L(p)^(sqrt(2) / 2)$.
 
   De plus, le nombre total d'additions de points à effectuer pour trouver $p$ est $L(p)^sqrt(2)$, que l'on peut majorer pour tout facteur premier par $L(n)$.
-]
+] <complex>
 
 #proof[
   L'équivalent asymptotique de la répartition des nombres premiers nous dit qu'il y a environ $B / (ln B)$ premiers inférieurs à $B$. La plupart vérifie $p^2 > B$ donc l'exposant nécessaire dans Lenstra est en général $1$.

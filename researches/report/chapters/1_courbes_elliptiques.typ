@@ -51,28 +51,30 @@ $ forall (x', y', z') in [x : y : z], P(x', y', z') = lambda^3 P(x, y, z) = 0 $
 
 Dans le plan projectif, l'annulation d'un polynôme homogène ne dépend donc pas du représentant choisi.
 
-#definition[Courbe elliptique][
-  On appelle *courbe elliptique sur un corps $KK$*, l'ensemble des solutions dans le plan projectif $PP^2(KK)$ de l'équation $F(X, Y, Z) = 0$, où $F$ est un polynôme homogène de degré 3 en trois indéterminées à coefficients dans $KK$.
+#definition[Cubique][
+  On appelle *cubique sur un corps $KK$*, l'ensemble des solutions dans le plan projectif $PP^2(KK)$ de l'équation $F(X, Y, Z) = 0$, où $F$ est un polynôme homogène de degré 3 en trois indéterminées à coefficients dans $KK$.
 
   Formellement, pour $F$ polynôme homogène de $KK_3[X, Y, Z]$, on note :
 
-  $ E(KK) := {[x : y : z] in PP^2(KK) , F(x, y, z) = 0} $
-
-  En l'absence d'ambiguïté sur le corps, on notera indistinctement $E(KK$) et $E$ les courbes elliptiques considérées.
+  $ V:= {[x : y : z] in PP^2(KK) , F(x, y, z) = 0} $
 ]
 
-On notera que multiplier le polynôme par un scalaire non nul ne change pas la courbe elliptique considérée.
+On notera que multiplier le polynôme par un scalaire non nul ne change pas la cubique considérée.
 
 #definition[Singularité][
-  Un point $P = [x : y : z]$ d'une courbe elliptique est dit *singulier* lorsque :
+  Un point $P = [x : y : z]$ d'une cubique est dit *singulier* lorsque :
 
   $ ((partial F) / (partial X)(P), (partial F) / (partial Y)(P), (partial F) / (partial Z)(P)) = (0, 0, 0) $
 
-  On dira d'une courbe elliptique qu'elle est *lisse* (ou  *non singulière*) si elle ne possède aucun point singulier, soit :
+  On dira d'une cubique qu'elle est *lisse* (ou  *non singulière*) si elle ne possède aucun point singulier, soit :
 
   $
     forall P in E(KK), ((partial F) / (partial X)(P), (partial F) / (partial Y)(P), (partial F) / (partial Z)(P)) eq.not (0, 0, 0)
   $
+]
+
+#definition[Courbe elliptique][
+  On appelle *courbe elliptique* une cubique lisse, que l'on notera $E(KK)$ ou simplement $E$ en l'absence d'ambiguïté.
 ]
 
 #let fn = (
@@ -80,7 +82,7 @@ On notera que multiplier le polynôme par un scalaire non nul ne change pas la c
   x => - calc.sqrt(x*x*x),
 )
 
-#align(center)[#figcan(caption: [Courbe elliptique singulière définie par $y^2 = x^3$.], {
+#align(center)[#figcan(caption: [Cubique singulière définie par $y^2 = x^3$.], {
   import draw: *
 
   // Set-up a thin axis style
@@ -105,7 +107,7 @@ On notera que multiplier le polynôme par un scalaire non nul ne change pas la c
 Par la suite, nous ne considérerons que des courbes elliptiques non singulières définies sur un corps $KK$ de caractéristique différente de 2 ou 3.
 
 #definition[Tangente][
-  Soit $E$ une courbe elliptique, et $P in E$ un point non singulier. Alors la *tangente à $E$ en $P$* est donnée par :
+  Soit $E$ une courbe elliptique, et $P in E$ un point. Alors la *tangente à $E$ en $P$* est donnée par :
 
   $
     (partial F) / (partial X) (P) (X - X_P) + (partial F) / (partial Y) (P) (Y - Y_P) +  \ (partial F) / (partial Z) (P) (Z - Z_P) = 0
@@ -118,11 +120,15 @@ Par la suite, nous ne considérerons que des courbes elliptiques non singulière
 
 == Forme de Weierstrass
 
+#lemma[
+  Une courbe elliptique possède au moins un point d'inflexion.
+]
+
 #proposition[][
-  Soient $E$ une courbe elliptique non singulière sur $KK$ et $P$ un point d'inflexion de $E$.
+  Soient $E$ une courbe elliptique sur $KK$ et $P$ un point d'inflexion de $E$.
 
   Alors un changement de variables linéaire inversible permet de transformer $P$ en $[0 : 1: 0]$ et la tangente en $P$ en $Z = 0$.
-]
+] <change>
 
 #proof[
   Soit $L$ la tangente à $E$ en $P = [x_P : y_P : z_P]$.
@@ -143,10 +149,10 @@ Par la suite, nous ne considérerons que des courbes elliptiques non singulière
 On peut donc se contenter d'étudier ce cas particulier dans la suite, et en déduire une étude générale.
 
 #theorem[Mise sous forme de Weierstrass][
-  Soit $E$ une courbe elliptique non singulière. Soit $cal(O)$ un point d'inflexion de $E$, si $cal(O) = [0 : 1 : 0]$ et si la tangente à $E$ en $cal(O)$ est $Z = 0$, alors $E$ est de la forme:
+  Soit $E$ une courbe elliptique. Soit $cal(O)$ un point d'inflexion de $E$, si $cal(O) = [0 : 1 : 0]$ et si la tangente à $E$ en $cal(O)$ est $Z = 0$, alors $E$ est de la forme:
 
   $ Y^2 Z + a_1 Y X Z + a_3 Y Z^2\  - (X^3 + a_2 X^2 Z + a_4 X Z^2 + a_6 Z^3) = 0 $
-]
+] <weierstrass>
 
 #proof[
   La forme générale du polynôme qui définit une courbe elliptique est :
@@ -161,7 +167,7 @@ On peut donc se contenter d'étudier ce cas particulier dans la suite, et en dé
   - L'intersection de la tangente $Z = 0$ en $cal(O)$ avec la courbe est donnée par l'équation $a X^3 + d X^2 Y = 0$, pour avoir ensuite $cal(O)$ point d'inflexion, il faut que ce point soit racine triple de $F(X : 1 : 0) = a X^3 + d X^2$, soit $d = 0$.
   - Supposons $a = 0$, on se place alors dans le plan $Z = 0$. Donc : $ (partial F) / (partial X) = 0 quad quad (partial F) / (partial Y) = 0 quad quad (partial F) / (partial Z) = e X^2 + j X Y + g Y^2 $
 
-    Ce polynôme de degré 2 peut donc s'annuler. Quitte à perdre en généralité, on suppose donc $a eq.not 0$ et la courbe reste elliptique.
+    C'est un polynôme de degré $2$ qui peut donc s'annuler. Quitte à perdre en généralité, on suppose donc $a eq.not 0$ et la courbe reste elliptique.
 
   On choisit alors un représentant de $F$ ayant un coefficient $1$ devant $X^3$ (possible car $a eq.not 0$). Ainsi, $F(X, Y, Z) = X^3 + alpha Z^3 + beta X^2 Z + gamma Y^2 Z + delta Z^2 X + epsilon Z^2 Y + zeta X Y Z; gamma eq.not 0$.
 
@@ -200,7 +206,7 @@ On peut donc se contenter d'étudier ce cas particulier dans la suite, et en dé
 On remarque que si $P$ et $Q$ sont deux points de $E$ ont même abscisse, alors $Q = plus.minus P$.
 
 #proposition[Critère de singularité][
-  Soit $E$ une équation sous forme de Weierstrass, alors $E$ est singulière si et seulement si la quantité $Delta := 4 a^3 + 27 b^2$ est nulle.
+  Soit $E$ une courbe elliptique sous forme de Weierstrass, alors $E$ est singulière si et seulement si la quantité $Delta := 4 a^3 + 27 b^2$ est nulle.
 ]
 
 #proof[
@@ -229,6 +235,12 @@ On remarque que si $P$ et $Q$ sont deux points de $E$ ont même abscisse, alors 
   Soient $E$ une courbe elliptique et $L$ une droite définies sur un corps $KK$. 
 
   Si $E$ a au moins deux points d'intersection (comptés avec multiplicité) avec la droite $L$, alors $E$ a exactement trois points d'intersection (comptés avec leur multiplicité) avec la droite $L$.
+]
+
+#proof[
+  On suppose que la droite passant par $P$ et $Q$ est d'équation $y = lambda x + beta$.
+
+  Alors ces points vérifient $f(x, lambda x + beta) = 0$. C'est un polynôme de degré $3$ admettant $2$ racines, on peut ainsi le factoriser, ce qui prouve l'existence d'une troisième racine.
 ]
 
 === Approche géométrique
@@ -319,6 +331,8 @@ On remarque que si $P$ et $Q$ sont deux points de $E$ ont même abscisse, alors 
   Donc par la formule de Viète, $lambda^2 = x_1 + x_2 + x_3$, et $x_3 = lambda^2 - x_1 - x_2$.
 
   Dans le cas $P = Q$, on a la même preuve en prenant $lambda = (3 x_1^2 + a) / (2 y_1)$ la pente de la tangente à $E$ en $P$.
+
+  En effet, si $f(x)^2 = x^3 + a x + b$, alors $2 f'(x) f(x) = 3 x^2 + a$, donc $f'(x_1) = (3 x_1^2 + a) / (2 y_1)$.
 ]
 
 C'est justement la nécessité d'un inverse qui permettra plus tard de trouver un facteur premier.
@@ -327,9 +341,11 @@ C'est justement la nécessité d'un inverse qui permettra plus tard de trouver u
   La loi $+$ est associative et commutative.
 ]
 
-#proof[
-  On montrer la commutativité géométriquement, et l'injectivité par le calcul en injectant les différentes expressions des coordonnées.
-]
+#colbreak()
+
+// #proof[
+//   On montrer la commutativité géométriquement, et l'injectivité par le calcul en injectant les différentes expressions des coordonnées.
+// ]
 
 #theorem[
   $(E, +)$ a une structure de groupe abélien, avec $cal(O)$ le neutre du groupe.

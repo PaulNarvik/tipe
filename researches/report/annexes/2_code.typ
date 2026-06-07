@@ -521,7 +521,6 @@ void factoriser(mpz_class &p, mpz_class *rngs, int NB_THREADS) {
         remaining.pop();
         remaining.push(facteur);
         remaining.push(p / facteur);
-        // param = choixParametres(p);
       }
 
       facteur = 1;
